@@ -1,4 +1,4 @@
-# OOP-Enrollmen-System
+# OOP-Enrollment-System
 
 ---
 **Author**: John Matthew I. Malabag
