@@ -19,12 +19,17 @@ public class Maincode {
         c.setCourseName("Integrative Programming");
         c.setCProgram("Information Technology");
 
-        System.out.printf("\nStudent Name: %s\nStudent ID: %s\nProgram: %s",s.getStudentName(),s.getStudentID(),s.getSProgram());
+        s.display();
         System.out.println("\n\n-----------------------------------------------");
-        System.out.printf("\nStudent Name: %s\nStudent ID: %s\nProgram: %s",s1.getStudentName(),s1.getStudentID(),s1.getSProgram());
+        s1.display();
         System.out.println("\n\n-----------------------------------------------");
-        System.out.printf("\nCourse Name: %s\nCourse ID: %s\nProgram: %s",c.getCourseName(), c.getCourseID(), c.getProgram());
+        c.cDisplay();
 
+//        System.out.printf("\nStudent Name: %s\nStudent ID: %s\nProgram: %s",s.getStudentName(),s.getStudentID(),s.getSProgram());
+//        System.out.println("\n\n-----------------------------------------------");
+//        System.out.printf("\nStudent Name: %s\nStudent ID: %s\nProgram: %s",s1.getStudentName(),s1.getStudentID(),s1.getSProgram());
+//        System.out.println("\n\n-----------------------------------------------");
+//        System.out.printf("\nCourse Name: %s\nCourse ID: %s\nProgram: %s",c.getCourseName(), c.getCourseID(), c.getProgram());
 
     }
 }

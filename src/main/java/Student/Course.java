@@ -34,4 +34,17 @@ public class Course {
     public void setCProgram(String program){
         this.program = program;
     }
+
+    public void cDisplay(){
+        System.out.printf("\nCourse Name: %s\nCourse ID: %s\nProgram: %s",getCourseName(), getCourseID(), getProgram());
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Course{" +
+//                "courseID='" + courseID + '\'' +
+//                ", courseName='" + courseName + '\'' +
+//                ", program='" + program + '\'' +
+//                '}';
+
 }

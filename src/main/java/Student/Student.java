@@ -33,4 +33,8 @@ public class Student {
     public void setSProgram(String Sprogram){
         this.Sprogram = Sprogram;
     }
+
+    public void display(){
+        System.out.printf("\nStudent Name: %s\nStudent ID: %s\nProgram: %s",getStudentName(),getStudentID(),getSProgram());
+    }
 }
