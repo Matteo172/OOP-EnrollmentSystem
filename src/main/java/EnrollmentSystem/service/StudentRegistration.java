@@ -20,25 +20,21 @@ public class StudentRegistration {
     }
 
     //Update
-    public void UpdateStudent(Student student) {
+    public void updateStudent(Student student) {
         for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).getStudentID() == (student.getStudentID())) {
-                System.out.print("Enter Name: ");
-                String name = scanner.next();
 
-                System.out.print("Enter Program: ");
-                String program = scanner.next();
-
-                students.set(i, new Student(student.getStudentID(), name, program));
+            if (students.get(i).getID() == (student.getID())) {
+                students.set(i, student);
                 break;
             }
         }
+
     }
 
     //Remove
     public void RemoveStudent(Student student){
         for(int i = 0; i < students.size(); i++){
-            if(students.get(i).getStudentID() == (student.getStudentID())){
+            if(students.get(i).getID() == (student.getID())){
                 students.remove(i);
             }
         }
