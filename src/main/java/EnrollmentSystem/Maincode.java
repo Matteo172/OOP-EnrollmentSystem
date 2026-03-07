@@ -9,36 +9,30 @@ public class Maincode {
 
     public static void main(String[] args){
 
-        StudentRegistration studentRegistration = new StudentRegistration();
-        CourseRegistration courseRegistration = new CourseRegistration();
-
-
-        studentRegistration.addStudent(new Student(1,"John Doe", "BSIT"));
-        studentRegistration.addStudent(new Student(2,"BOB", "BSIT"));
-        studentRegistration.addStudent(new Student(3,"Charlie", "BSIT"));
-
-
-        courseRegistration.addCourse(new Course(1,"ITPROMA", "BSIT"));
-        courseRegistration.addCourse(new Course(2,"INFOMAN", "BSIT"));
-        courseRegistration.addCourse(new Course(3,"SYSDE", "BSIT"));
+//        StudentRegistration studentRegistration = new StudentRegistration();
+//        CourseRegistration courseRegistration = new CourseRegistration();
+//
+//
+//        studentRegistration.addStudent(new Student(1,"John Doe", "BSIT"));
+//        studentRegistration.addStudent(new Student(2,"BOB", "BSIT"));
+//        studentRegistration.addStudent(new Student(3,"Charlie", "BSIT"));
+//
+//
+//        courseRegistration.addCourse(new Course(1,"ITPROMA", "BSIT"));
+//        courseRegistration.addCourse(new Course(2,"INFOMAN", "BSIT"));
+//        courseRegistration.addCourse(new Course(3,"SYSDE", "BSIT"));
 
 
 
 
 
         //update
-
-        studentRegistration.DisplayStudent();
+        //studentRegistration.updateStudent(new Student(1, "Justine", "BSIT"));
+        //studentRegistration.DisplayStudent();
 
         //remove
-
-        courseRegistration.DisplayCourse();
-
-
-
-
-
-
+        //studentRegistration.delete(new Student(1, "John Does", "BSIT"));
+        //courseRegistration.DisplayCourse();
 
 
 

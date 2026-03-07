@@ -2,19 +2,15 @@ package EnrollmentSystem.model;
 
 public class Course {
 
-    private String courseName, program;
-    private int courseID;
+    private String courseID, courseName, Program;
 
-
-
-
-    public Course(int courseID, String courseName, String program){
+    public Course(String courseID, String courseName, String Program){
         this.courseID = courseID;
         this.courseName = courseName;
-        this.program = program;
+        this.Program = Program;
     }
 
-    public int getCourseID(){
+    public String getCourseID(){
         return courseID;
     }
 
@@ -23,10 +19,10 @@ public class Course {
     }
 
     public String getProgram(){
-        return program;
+        return Program;
     }
 
-    public void setCourseID(int courseID){
+    public void setCourseID(String courseID){
         this.courseID = courseID;
     }
 
@@ -35,20 +31,12 @@ public class Course {
     }
 
     public void setCProgram(String program){
-        this.program = program;
+        this.Program = program;
     }
 
     public void cDisplay(){
         System.out.printf("\nCourse Name: %s\nCourse ID: %s\nProgram: %s",getCourseName(), getCourseID(), getProgram());
     }
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "courseID='" + courseID + '\'' +
-                ", courseName='" + courseName + '\'' +
-                ", program='" + program + '\'' +
-                '}';
-    }
 
 }
