@@ -38,5 +38,12 @@ public class Course {
         System.out.printf("\nCourse Name: %s\nCourse ID: %s\nProgram: %s",getCourseName(), getCourseID(), getProgram());
     }
 
-
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseID='" + courseID + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", Program='" + Program + '\'' +
+                '}';
+    }
 }
