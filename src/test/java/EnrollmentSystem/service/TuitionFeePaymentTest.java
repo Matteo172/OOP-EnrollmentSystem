@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class TuitionFeePaymentTest {
 
-    public TuitionFeePayment tuitionFeePayment;
+    private TuitionFeePayment tuitionFeePayment;
 
     @BeforeEach
     void setup(){
@@ -16,25 +16,36 @@ class TuitionFeePaymentTest {
     @Test
     void shouldCalculateTuitionfee(){
 
-        tuitionFeePayment.calculateTuitionFee(16, 0.10);
-        assertEquals(14400.00, tuitionFeePayment.getRemainingBalance());
+        assertEquals(3000.0, tuitionFeePayment.calculateTuitionFee(3, 0));
+    }
 
+    @Test
+    void shouldCalculateTuitionfeewithDiscount(){
+
+        assertEquals(2700.0, tuitionFeePayment.calculateTuitionFee(3, 0.10));
     }
 
     @Test
     void shouldMakePayment(){
 
-        tuitionFeePayment.calculateTuitionFee(16,0.10);
-        tuitionFeePayment.makePayment(14400.00);
+        tuitionFeePayment.calculateTuitionFee(3,0.10);
+        tuitionFeePayment.makePayment(2700.0);
         assertEquals(0, tuitionFeePayment.getRemainingBalance());
     }
 
     @Test
-    void shouldFullyPaid(){
+    void shouldCheckIfFullyPaid(){
 
+        tuitionFeePayment.calculateTuitionFee(3,0.10);
+        tuitionFeePayment.makePayment(2700.0);
         assertTrue(tuitionFeePayment.isFullyPaid());
     }
 
-
+    @Test
+    void shouldCheckIfNotFullyPaid(){
+        tuitionFeePayment.calculateTuitionFee(3,0.10);
+        tuitionFeePayment.makePayment(1000.0);
+        assertFalse(tuitionFeePayment.isFullyPaid());
+    }
 
 }

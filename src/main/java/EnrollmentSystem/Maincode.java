@@ -4,6 +4,7 @@ import EnrollmentSystem.model.Course;
 import EnrollmentSystem.model.Student;
 import EnrollmentSystem.service.CourseRegistration;
 import EnrollmentSystem.service.StudentRegistration;
+import EnrollmentSystem.service.TuitionFeePayment;
 
 public class Maincode {
 
@@ -11,7 +12,7 @@ public class Maincode {
 
         StudentRegistration studentRegistration = new StudentRegistration();
         CourseRegistration courseRegistration = new CourseRegistration();
-
+        TuitionFeePayment tuitionFeePayment = new TuitionFeePayment();
 
         studentRegistration.addStudent(new Student("Justine Betito",1));
         studentRegistration.addStudent(new Student("Paul Bathan", 2));
@@ -29,6 +30,10 @@ public class Maincode {
         //update
         studentRegistration.updateStudent(new Student("Sam Abjelina", 3));
         studentRegistration.DisplayStudent();
+
+        tuitionFeePayment.calculateTuitionFee(16, .10);
+
+
 
         //remove
 //        studentRegistration.delete(new Student("Aryl Manalo", 1));
