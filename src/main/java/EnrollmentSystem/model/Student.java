@@ -5,6 +5,10 @@ public class Student extends Person{
 
     private String Sprogram;
 
+    public Student(){
+
+    }
+
     public Student(String Name, int ID) {
         super(Name, ID);
     }
@@ -19,6 +23,10 @@ public class Student extends Person{
 
     public void setSprogram(String Sprogram){
         this.Sprogram = Sprogram;
+    }
+
+    public void mainTask(){
+        System.out.println("Studies");
     }
 
     @Override

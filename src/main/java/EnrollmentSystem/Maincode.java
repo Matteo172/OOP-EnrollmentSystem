@@ -1,6 +1,7 @@
 package EnrollmentSystem;
 
 import EnrollmentSystem.model.Course;
+import EnrollmentSystem.model.Instructor;
 import EnrollmentSystem.model.Student;
 import EnrollmentSystem.service.CourseRegistration;
 import EnrollmentSystem.service.StudentRegistration;
@@ -10,28 +11,37 @@ public class Maincode {
 
     public static void main(String[] args){
 
-        StudentRegistration studentRegistration = new StudentRegistration();
-        CourseRegistration courseRegistration = new CourseRegistration();
-        TuitionFeePayment tuitionFeePayment = new TuitionFeePayment();
+        Student student = new Student();
+        Instructor instructor = new Instructor();
 
-        studentRegistration.addStudent(new Student("Justine Betito",1));
-        studentRegistration.addStudent(new Student("Paul Bathan", 2));
-        studentRegistration.addStudent(new Student("Gab Barrion", 3));
-
-
-        courseRegistration.addCourse(new Course("1","ITPROMA", "BSIT"));
-        courseRegistration.addCourse(new Course("2","INFOMAN", "BSIT"));
-        courseRegistration.addCourse(new Course("3","SYSDE", "BSIT"));
+        student.mainTask();
+        instructor.mainTask();
 
 
 
 
+//        StudentRegistration studentRegistration = new StudentRegistration();
+//        CourseRegistration courseRegistration = new CourseRegistration();
+//        TuitionFeePayment tuitionFeePayment = new TuitionFeePayment();
+//
+//        studentRegistration.addStudent(new Student("Justine Betito",1));
+//        studentRegistration.addStudent(new Student("Paul Bathan", 2));
+//        studentRegistration.addStudent(new Student("Gab Barrion", 3));
+//
+//
+//        courseRegistration.addCourse(new Course("1","ITPROMA", "BSIT"));
+//        courseRegistration.addCourse(new Course("2","INFOMAN", "BSIT"));
+//        courseRegistration.addCourse(new Course("3","SYSDE", "BSIT"));
+//
+//
+//
+//
 
         //update
-        studentRegistration.updateStudent(new Student("Sam Abjelina", 3));
-        studentRegistration.DisplayStudent();
-
-        tuitionFeePayment.calculateTuitionFee(16, .10);
+//        studentRegistration.updateStudent(new Student("Sam Abjelina", 3));
+//        studentRegistration.DisplayStudent();
+//
+//        tuitionFeePayment.calculateTuitionFee(16, .10);
 
 
 

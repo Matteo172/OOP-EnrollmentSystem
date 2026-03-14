@@ -27,4 +27,18 @@
 ![Screenshot 2026-03-07 121435.png](src/main/resources/Screenshot%202026-03-07%20121435.png)
 ![Screenshot 2026-03-07 121503.png](src/main/resources/Screenshot%202026-03-07%20121503.png)
 
+# Abstraction
+
+---
+**Author**: John Matthew I. Malabag
+
+**1. Description**
+
+    - Refactoring the old code by adding a MainTask Constructor but it is an abstract
+
+![Screenshot 2026-03-14 115021.png](src/main/resources/Images/Screenshot%202026-03-14%20115021.png)
+![Screenshot 2026-03-14 115128.png](src/main/resources/Images/Screenshot%202026-03-14%20115128.png)
+![Screenshot 2026-03-14 115216.png](src/main/resources/Images/Screenshot%202026-03-14%20115216.png)
+![Screenshot 2026-03-14 115243.png](src/main/resources/Images/Screenshot%202026-03-14%20115243.png)
+
 
