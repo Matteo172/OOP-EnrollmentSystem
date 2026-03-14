@@ -1,6 +1,6 @@
 package EnrollmentSystem.model;
 
-public class Person {
+public abstract class Person {
 
     private int ID;
     private String Name;
@@ -8,6 +8,9 @@ public class Person {
     public Person(String Name, int ID){
         this.Name = Name;
         this.ID = ID;
+    }
+
+    protected Person() {
     }
 
     public int getID(){
@@ -25,5 +28,8 @@ public class Person {
     public void setName(String Name){
         this.Name = Name;
     }
+
+    public abstract void mainTask();
+
 
 }
