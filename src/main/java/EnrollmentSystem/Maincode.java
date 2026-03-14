@@ -4,35 +4,40 @@ import EnrollmentSystem.model.Course;
 import EnrollmentSystem.model.Student;
 import EnrollmentSystem.service.CourseRegistration;
 import EnrollmentSystem.service.StudentRegistration;
+import EnrollmentSystem.service.TuitionFeePayment;
 
 public class Maincode {
 
     public static void main(String[] args){
 
-//        StudentRegistration studentRegistration = new StudentRegistration();
-//        CourseRegistration courseRegistration = new CourseRegistration();
-//
-//
-//        studentRegistration.addStudent(new Student(1,"John Doe", "BSIT"));
-//        studentRegistration.addStudent(new Student(2,"BOB", "BSIT"));
-//        studentRegistration.addStudent(new Student(3,"Charlie", "BSIT"));
-//
-//
-//        courseRegistration.addCourse(new Course(1,"ITPROMA", "BSIT"));
-//        courseRegistration.addCourse(new Course(2,"INFOMAN", "BSIT"));
-//        courseRegistration.addCourse(new Course(3,"SYSDE", "BSIT"));
+        StudentRegistration studentRegistration = new StudentRegistration();
+        CourseRegistration courseRegistration = new CourseRegistration();
+        TuitionFeePayment tuitionFeePayment = new TuitionFeePayment();
+
+        studentRegistration.addStudent(new Student("Justine Betito",1));
+        studentRegistration.addStudent(new Student("Paul Bathan", 2));
+        studentRegistration.addStudent(new Student("Gab Barrion", 3));
+
+
+        courseRegistration.addCourse(new Course("1","ITPROMA", "BSIT"));
+        courseRegistration.addCourse(new Course("2","INFOMAN", "BSIT"));
+        courseRegistration.addCourse(new Course("3","SYSDE", "BSIT"));
 
 
 
 
 
         //update
-        //studentRegistration.updateStudent(new Student(1, "Justine", "BSIT"));
-        //studentRegistration.DisplayStudent();
+        studentRegistration.updateStudent(new Student("Sam Abjelina", 3));
+        studentRegistration.DisplayStudent();
+
+        tuitionFeePayment.calculateTuitionFee(16, .10);
+
+
 
         //remove
-        //studentRegistration.delete(new Student(1, "John Does", "BSIT"));
-        //courseRegistration.DisplayCourse();
+//        studentRegistration.delete(new Student("Aryl Manalo", 1));
+//        courseRegistration.DisplayCourse();
 
 
 
