@@ -1,21 +1,32 @@
 package EnrollmentSystem;
 
-import EnrollmentSystem.model.Course;
 import EnrollmentSystem.model.Instructor;
 import EnrollmentSystem.model.Student;
-import EnrollmentSystem.service.CourseRegistration;
+import EnrollmentSystem.service.CampusRegistrar;
+import EnrollmentSystem.service.CourseRegistrationImpl;
 import EnrollmentSystem.service.StudentRegistration;
-import EnrollmentSystem.service.TuitionFeePayment;
+import EnrollmentSystem.service.StudentRegistrationImpl;
 
 public class Maincode {
 
     public static void main(String[] args){
+
+
 
         Student student = new Student();
         Instructor instructor = new Instructor();
 
         student.mainTask();
         instructor.mainTask();
+
+        StudentRegistrationImpl studentRegistration = new StudentRegistrationImpl();
+
+        CourseRegistrationImpl courseRegistration = new CourseRegistrationImpl();
+
+        CampusRegistrar campusRegistrar = new CampusRegistrar(studentRegistration, courseRegistration);
+
+        System.out.println("Welcome to Enrollment System");
+
 
 
 

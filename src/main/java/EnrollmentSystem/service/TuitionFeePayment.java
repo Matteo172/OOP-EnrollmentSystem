@@ -1,6 +1,6 @@
 package EnrollmentSystem.service;
 
-public class TuitionFeePayment {
+public class    TuitionFeePayment {
 
     private final double PRICE_PER_UNIT = 1000.00;
     private double Balance;
