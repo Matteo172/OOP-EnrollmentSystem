@@ -10,7 +10,7 @@ public abstract class Person {
         this.ID = ID;
     }
 
-    protected Person() {
+    public Person() {
     }
 
     public int getID(){
