@@ -2,7 +2,6 @@ package EnrollmentSystem.model;
 
 public class Student extends Person{
 
-
     private String Sprogram;
 
     public Student(){
@@ -13,8 +12,9 @@ public class Student extends Person{
         super(Name, ID);
     }
 
-    public Student(String Name, int ID, String Sprogram) {
+    public Student(int ID, String Name, String Sprogram) {
         super(Name, ID);
+        this.Sprogram = Sprogram;
     }
 
     public String getSprogram(){

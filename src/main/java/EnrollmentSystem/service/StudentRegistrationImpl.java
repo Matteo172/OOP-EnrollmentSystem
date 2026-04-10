@@ -1,4 +1,5 @@
 package EnrollmentSystem.service;
+import EnrollmentSystem.model.Course;
 import EnrollmentSystem.model.Student;
 
 
@@ -14,6 +15,7 @@ public class StudentRegistrationImpl implements StudentRegistration {
         students.add(student);
     }
 
+    //Display
     @Override
     public void DisplayStudent(){
         System.out.println(students);
@@ -21,15 +23,19 @@ public class StudentRegistrationImpl implements StudentRegistration {
 
     //Update
     @Override
-    public void updateStudent(Student student) {
+    public void UpdateStudent(Student student) {
         for (int i = 0; i < students.size(); i++) {
-
             if (students.get(i).getID() == (student.getID())) {
-                students.set(i, student);
+                System.out.print("Enter Name: ");
+                String name = scanner.next();
+
+                System.out.print("Enter Program: ");
+                String program = scanner.next();
+
+                students.set(i, new Student(student.getID(), name, program));
                 break;
             }
         }
-
     }
 
     //Remove
@@ -38,6 +44,7 @@ public class StudentRegistrationImpl implements StudentRegistration {
         for(int i = 0; i < students.size(); i++){
             if(students.get(i).getID() == (student.getID())){
                 students.remove(i);
+                break;
             }
         }
     }

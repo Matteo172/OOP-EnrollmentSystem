@@ -20,7 +20,7 @@ public class CourseRegistrationImpl implements CourseRegistration {
 
     //Update
     @Override
-    public void UpdateStudent(Course course) {
+    public void UpdateCourse(Course course) {
         for (int i = 0; i < courses.size(); i++) {
             if (courses.get(i).getCourseID() == (course.getCourseID())) {
                 System.out.print("Enter Name: ");
@@ -37,10 +37,11 @@ public class CourseRegistrationImpl implements CourseRegistration {
 
     //Remove
     @Override
-    public void RemoveStudent(Course course){
+    public void RemoveCourse(Course course){
         for(int i = 0; i < courses.size(); i++){
             if(courses.get(i).getCourseID() == (course.getCourseID())){
                 courses.remove(i);
+                break;
             }
         }
     }

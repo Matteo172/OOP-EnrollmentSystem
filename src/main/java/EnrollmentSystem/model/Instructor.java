@@ -1,5 +1,4 @@
 package EnrollmentSystem.model;
-import java.util.*;
 
 public class Instructor extends Person {
 
