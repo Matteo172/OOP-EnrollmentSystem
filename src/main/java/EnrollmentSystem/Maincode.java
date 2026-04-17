@@ -1,18 +1,15 @@
 package EnrollmentSystem;
 import java.util.*;
-
-import EnrollmentSystem.model.Course;
-import EnrollmentSystem.model.Instructor;
-import EnrollmentSystem.model.Student;
+import EnrollmentSystem.model.*;
 import EnrollmentSystem.service.CampusRegistrar;
-import EnrollmentSystem.service.CourseRegistrationImpl;
-import EnrollmentSystem.service.StudentRegistration;
-import EnrollmentSystem.service.StudentRegistrationImpl;
+import EnrollmentSystem.service.CourseRegistrationService;
+import EnrollmentSystem.service.DepartmentRegistrationService;
+import EnrollmentSystem.service.StudentRegistrationService;
 
 public class Maincode {
 
-    public static void clearscreen(){
-        System.out.print("\033[H\033[2J");
+    public static void clearscreen() {
+        System.out.print("\n".repeat(50));
         System.out.flush();
     }
 
@@ -20,39 +17,39 @@ public class Maincode {
 
         Scanner scanner = new Scanner(System.in);
 
-//        Student student = new Student();
-//        student.mainTask();
-//
-//        Instructor instructor = new Instructor();
-//        instructor.mainTask();
+        StudentRegistrationService studentRegistration = new StudentRegistrationService();
+        CourseRegistrationService courseRegistration = new CourseRegistrationService();
+        DepartmentRegistrationService  departmentRegistration = new DepartmentRegistrationService();
 
+        CampusRegistrar campusRegistrar = new CampusRegistrar(studentRegistration, courseRegistration, departmentRegistration);
 
-        StudentRegistrationImpl studentRegistration = new StudentRegistrationImpl();
-        CourseRegistrationImpl courseRegistration = new CourseRegistrationImpl();
-
-        CampusRegistrar campusRegistrar = new CampusRegistrar(studentRegistration, courseRegistration);
-
-        boolean checker = false;
+        boolean running = true;
 
         clearscreen();
-        System.out.println("██     ██ ▄▄▄▄▄ ▄▄     ▄▄▄▄  ▄▄▄  ▄▄   ▄▄ ▄▄▄▄▄   ▄▄▄▄▄▄ ▄▄▄    ██████ ▄▄  ▄▄ ▄▄▄▄   ▄▄▄  ▄▄    ▄▄    ▄▄   ▄▄ ▄▄▄▄▄ ▄▄  ▄▄ ▄▄▄▄▄▄   ▄█████ ▄▄ ▄▄  ▄▄▄▄ ▄▄▄▄▄▄ ▄▄▄▄▄ ▄▄   ▄▄ ");
-        System.out.println("██ ▄█▄ ██ ██▄▄  ██    ██▀▀▀ ██▀██ ██▀▄▀██ ██▄▄      ██  ██▀██   ██▄▄   ███▄██ ██▄█▄ ██▀██ ██    ██    ██▀▄▀██ ██▄▄  ███▄██   ██     ▀▀▀▄▄▄ ▀███▀ ███▄▄   ██   ██▄▄  ██▀▄▀██ ");
-        System.out.println(" ▀██▀██▀  ██▄▄▄ ██▄▄▄ ▀████ ▀███▀ ██   ██ ██▄▄▄     ██  ▀███▀   ██▄▄▄▄ ██ ▀██ ██ ██ ▀███▀ ██▄▄▄ ██▄▄▄ ██   ██ ██▄▄▄ ██ ▀██   ██     █████▀   █   ▄▄██▀   ██   ██▄▄▄ ██   ██ \n\n");
+        System.out.println("██     ██ ▄▄▄▄▄ ▄▄     ▄▄▄▄  ▄▄▄  ▄▄   ▄▄ ▄▄▄▄▄   ▄▄▄▄▄▄ ▄▄▄    ██████ ▄▄  ▄▄ ▄▄▄▄  " +
+                " ▄▄▄  ▄▄    ▄▄    ▄▄   ▄▄ ▄▄▄▄▄ ▄▄  ▄▄ ▄▄▄▄▄▄   ▄█████ ▄▄ ▄▄  ▄▄▄▄ ▄▄▄▄▄▄ ▄▄▄▄▄ ▄▄   ▄▄ ");
+        System.out.println("██ ▄█▄ ██ ██▄▄  ██    ██▀▀▀ ██▀██ ██▀▄▀██ ██▄▄      ██  ██▀██   ██▄▄   ███▄██ ██▄█▄ " +
+                "██▀██ ██    ██    ██▀▄▀██ ██▄▄  ███▄██   ██     ▀▀▀▄▄▄ ▀███▀ ███▄▄   ██   ██▄▄  ██▀▄▀██ ");
+        System.out.println(" ▀██▀██▀  ██▄▄▄ ██▄▄▄ ▀████ ▀███▀ ██   ██ ██▄▄▄     ██  ▀███▀   ██▄▄▄▄ ██ ▀██ ██ ██ " +
+                "▀███▀ ██▄▄▄ ██▄▄▄ ██   ██ ██▄▄▄ ██ ▀██   ██     █████▀   █   ▄▄██▀   ██   ██▄▄▄ ██   ██ \n\n");
 
-        while(!checker){
+
+
+        while(running){
             System.out.println("╔══════════════════════════════════════════════════╗");
-            System.out.println("║                USER ACCESS MENU                  ║");
+            System.out.println("║              CAMPUS REGISTRAR MENU               ║");
             System.out.println("╠══════════════════════════════════════════════════╣");
             System.out.println("║   1. Student Registration                        ║");
             System.out.println("║   2. Course Registration                         ║");
-            System.out.println("║   3. Exit                                        ║");
+            System.out.println("║   3. Department Registration                     ║");
+            System.out.println("║   4. Exit                                        ║");
             System.out.println("╚══════════════════════════════════════════════════╝");
 
             try{
                 System.out.print("\n Enter your choice: ");
                 int choice = scanner.nextInt();
 
-                switch (choice){
+                switch(choice){
 
                     case 1:
                         clearscreen();
@@ -71,8 +68,44 @@ public class Maincode {
                             System.out.print("\n Enter your choice: ");
                             int choice2 = scanner.nextInt();
 
-                            switch (choice){
+                            switch (choice2){
                                 case 1:
+                                    clearscreen();
+                                    System.out.println("\n====== Register New Student ======");
+                                    System.out.print("Enter ID Number: ");
+                                    int id = scanner.nextInt();
+                                    scanner.nextLine();
+
+                                    System.out.print("Enter Name: ");
+                                    String name = scanner.nextLine();
+
+                                    System.out.print("Enter Program: ");
+                                    String program = scanner.nextLine();
+
+                                    String result = campusRegistrar.saveStudent(new Student(id, name, program));
+                                    System.out.println("\n" + result);
+
+                                    System.out.println("Press Enter to continue");
+                                    scanner.nextLine();
+                                    break;
+                                case 2:
+                                    clearscreen();
+                                    campusRegistrar.displayAllStudent();
+                                    System.out.println("\nPress Enter to return...");
+                                    scanner.nextLine();
+                                    scanner.nextLine();
+                                    break;
+                                case 3:
+                                    clearscreen();
+                                    break;
+                                case 4:
+                                    clearscreen();
+                                    break;
+                                case 5:
+                                    clearscreen();
+                                    break;
+                                default:
+                                    System.out.println("Invalid Choice. Please Try again");
                             }
 
                         }catch(InputMismatchException e){
@@ -86,7 +119,6 @@ public class Maincode {
 
 
                         break;
-
 
 
                     case 2:
@@ -103,10 +135,26 @@ public class Maincode {
 
                         try{
                             System.out.print("\n Enter your choice: ");
-                            int choice2 = scanner.nextInt();
+                            int choice3 = scanner.nextInt();
 
-                            switch (choice){
+                            switch (choice3){
                                 case 1:
+                                    clearscreen();
+                                    break;
+                                case 2:
+                                    clearscreen();
+                                    break;
+                                case 3:
+                                    clearscreen();
+                                    break;
+                                case 4:
+                                    clearscreen();
+                                    break;
+                                case 5:
+                                    clearscreen();
+                                    break;
+                                default:
+                                    System.out.println("Invalid Choice. Please Try again");
                             }
 
                         }catch(InputMismatchException e){
@@ -122,7 +170,56 @@ public class Maincode {
                         break;
 
 
-                    case 3: clearscreen();
+                    case 3:
+                        clearscreen();
+                        System.out.println("╔══════════════════════════════════════════════════╗");
+                        System.out.println("║             DEPARTMENT REGISTRATION              ║");
+                        System.out.println("╠══════════════════════════════════════════════════╣");
+                        System.out.println("║   1. Save Course                                 ║");
+                        System.out.println("║   2. Display Course                              ║");
+                        System.out.println("║   3. Update Course                               ║");
+                        System.out.println("║   4. Remove Course                               ║");
+                        System.out.println("║   5. Exit                                        ║");
+                        System.out.println("╚══════════════════════════════════════════════════╝");
+
+                        try{
+                            System.out.print("\n Enter your choice: ");
+                            int choice4 = scanner.nextInt();
+
+                            switch (choice4){
+                                case 1:
+                                    clearscreen();
+                                    break;
+                                case 2:
+                                    clearscreen();
+                                    break;
+                                case 3:
+                                    clearscreen();
+                                    break;
+                                case 4:
+                                    clearscreen();
+                                    break;
+                                case 5:
+                                    clearscreen();
+                                    break;
+                                default:
+                                    System.out.println("Invalid Choice. Please Try again");
+                            }
+
+                        }catch(InputMismatchException e){
+                            System.out.println("\nInvalid input.\n");
+                            System.out.println("Type Anything to continue.");
+                            scanner.nextLine();
+                            scanner.next();
+                            clearscreen();
+
+                        }
+
+
+                        break;
+
+
+                    case 4:
                         clearscreen();
                         System.out.println("                                                                        ");
                         System.out.println("                                                                        ");

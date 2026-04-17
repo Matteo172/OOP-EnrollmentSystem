@@ -34,7 +34,7 @@ public class Course {
         this.Program = program;
     }
 
-    public void cDisplay(){
+    public void courseDisplay(){
         System.out.printf("\nCourse Name: %s\nCourse ID: %s\nProgram: %s",getCourseName(), getCourseID(), getProgram());
     }
 

@@ -1,0 +1,59 @@
+package EnrollmentSystem.model;
+import java.util.*;
+
+public class Section {
+
+    private String sectionID;
+    private Course course;
+    private Instructor instructor;
+    private List<Student> studentList;
+
+    Section(String sectionID, Course course, Instructor instructor, List<Student> studentList){
+        this.sectionID = sectionID;
+        this.course = course;
+        this.instructor = instructor;
+        this.studentList = studentList;
+    }
+
+    public void setSectionID(String sectionID){
+        this.sectionID = sectionID;
+    }
+
+    public void setCourse(Course course){
+        this.course = course;
+    }
+
+    public void setInstructor(Instructor instructor){
+        this.instructor = instructor;
+    }
+
+    public void setStudentList(List<Student> studentList){
+        this.studentList = studentList;
+    }
+
+    public String getSectionID(){
+        return sectionID;
+    }
+
+    public Course getCourse(){
+        return course;
+    }
+
+    public Instructor getInstructor(){
+        return instructor;
+    }
+
+    public List<Student> getStudentList(){
+        return studentList;
+    }
+
+    @Override
+    public String toString() {
+        return "Section{" +
+                "sectionID='" + sectionID + '\'' +
+                ", course=" + course +
+                ", instructor=" + instructor +
+                ", studentList=" + studentList +
+                '}';
+    }
+}

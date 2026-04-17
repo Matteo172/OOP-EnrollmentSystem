@@ -2,15 +2,19 @@ package EnrollmentSystem.model;
 
 public class Instructor extends Person {
 
-
     private String Course;
 
     public Instructor(){
 
     }
 
-    public Instructor(String Name, int ID){
-        super(Name, ID);
+    public Instructor(int ID, String Name){
+        super(ID, Name);
+    }
+
+    public Instructor(int ID, String Name, String Course){
+        super(ID, Name);
+        this.Course = Course;
     }
 
     public String getCourse(){
@@ -25,4 +29,10 @@ public class Instructor extends Person {
         System.out.println("Teaches");
     }
 
+    @Override
+    public String toString() {
+        return "Instructor{" +
+                "Course='" + Course + '\'' +
+                '}';
+    }
 }
