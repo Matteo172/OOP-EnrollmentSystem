@@ -2,15 +2,21 @@ package EnrollmentSystem.service;
 import java.util.*;
 import EnrollmentSystem.model.Department;
 import EnrollmentSystem.model.Instructor;
+import EnrollmentSystem.model.Section;
 
 public class DepartmentRegistrationService implements DepartmentReg {
 
-    Scanner scanner = new Scanner(System.in);
     public List<Department> departments = new ArrayList<>();
 
     @Override
-    public void addDepartment(String departmentID, String departmentName, List<Instructor> InstructorList) {
-        Department newDepartment = new Department(departmentID, departmentName, InstructorList);
+    public void addDepartment(String departmentID, String departmentName, List<Instructor> instructorList, List<Section> sectionList) {
+        for (Department d : departments) {
+            if (d.getDepartmentID().equals(departmentID)) {
+                System.out.println("Error: Department ID " + departmentID + " already exists.");
+                return;
+            }
+        }
+        Department newDepartment = new Department(departmentID, departmentName, instructorList, sectionList);
         departments.add(newDepartment);
     }
 
@@ -19,6 +25,7 @@ public class DepartmentRegistrationService implements DepartmentReg {
         if(departments.isEmpty()){
             System.out.println("No Department/s Found.");
         }else{
+            System.out.println("\n====== LIST OF DEPARTMENTS ======");
             System.out.println(departments);
         }
     }
@@ -27,10 +34,7 @@ public class DepartmentRegistrationService implements DepartmentReg {
     public void UpdateDepartment(Department department) {
         for (int i = 0; i < departments.size(); i++) {
             if (departments.get(i).getDepartmentID().equals(department.getDepartmentID())) {
-                System.out.print("Enter new Department Name: ");
-                String name = scanner.nextLine();
-                departments.get(i).setDepartmentName(name);
-                System.out.println("Department updated.");
+                departments.set(i, department);
                 return;
             }
         }

@@ -2,7 +2,7 @@ package EnrollmentSystem.model;
 
 public class Instructor extends Person {
 
-    private String Course;
+    private String course;
 
     public Instructor(){
 
@@ -12,17 +12,17 @@ public class Instructor extends Person {
         super(ID, Name);
     }
 
-    public Instructor(int ID, String Name, String Course){
+    public Instructor(int ID, String Name, String course){
         super(ID, Name);
-        this.Course = Course;
+        this.course = course;
     }
 
     public String getCourse(){
-        return Course;
+        return course;
     }
 
-    public void setCourse(String Course){
-        this.Course = Course;
+    public void setCourse(String course){
+        this.course = course;
     }
 
     public void mainTask(){
@@ -32,7 +32,7 @@ public class Instructor extends Person {
     @Override
     public String toString() {
         return "Instructor{" +
-                "Course='" + Course + '\'' +
+                "Course='" + course + '\'' +
                 '}';
     }
 }

@@ -2,12 +2,12 @@ package EnrollmentSystem.model;
 
 public class Course {
 
-    private String courseID, courseName, Program;
+    private String courseID, courseName, program;
 
     public Course(String courseID, String courseName, String Program){
         this.courseID = courseID;
         this.courseName = courseName;
-        this.Program = Program;
+        this.program = Program;
     }
 
     public String getCourseID(){
@@ -19,7 +19,7 @@ public class Course {
     }
 
     public String getProgram(){
-        return Program;
+        return program;
     }
 
     public void setCourseID(String courseID){
@@ -30,8 +30,8 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public void setCProgram(String program){
-        this.Program = program;
+    public void setProgram(String program){
+        this.program = program;
     }
 
     public void courseDisplay(){
@@ -40,10 +40,6 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "courseID='" + courseID + '\'' +
-                ", courseName='" + courseName + '\'' +
-                ", Program='" + Program + '\'' +
-                '}';
+        return "ID: " + getCourseID() + " | Name: " + getCourseName() + " | Program: " + getProgram();
     }
 }

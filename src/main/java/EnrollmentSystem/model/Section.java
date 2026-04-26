@@ -7,12 +7,14 @@ public class Section {
     private Course course;
     private Instructor instructor;
     private List<Student> studentList;
+    private int maxCapacity;
 
-    Section(String sectionID, Course course, Instructor instructor, List<Student> studentList){
+    public Section(String sectionID, Course course, Instructor instructor, int maxCapacity){
         this.sectionID = sectionID;
         this.course = course;
         this.instructor = instructor;
-        this.studentList = studentList;
+        this.maxCapacity = maxCapacity;
+        this.studentList = new ArrayList<>();
     }
 
     public void setSectionID(String sectionID){
@@ -31,6 +33,10 @@ public class Section {
         this.studentList = studentList;
     }
 
+    public void setMaxCapacity(int maxCapacity){
+        this.maxCapacity = maxCapacity;
+    }
+
     public String getSectionID(){
         return sectionID;
     }
@@ -43,8 +49,12 @@ public class Section {
         return instructor;
     }
 
-    public List<Student> getStudentList(){
+    public List<Student> getEnrolledStudents(){
         return studentList;
+    }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
     }
 
     @Override
@@ -54,6 +64,7 @@ public class Section {
                 ", course=" + course +
                 ", instructor=" + instructor +
                 ", studentList=" + studentList +
+                ", maxCapacity=" + maxCapacity +
                 '}';
     }
 }

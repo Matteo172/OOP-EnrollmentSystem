@@ -1,9 +1,6 @@
 package EnrollmentSystem.service;
 
-import EnrollmentSystem.model.Instructor;
-import EnrollmentSystem.model.Student;
-import EnrollmentSystem.model.Course;
-import EnrollmentSystem.model.Department;
+import EnrollmentSystem.model.*;
 
 import java.util.List;
 
@@ -11,11 +8,15 @@ public class CampusRegistrar {
     private StudentReg studentRegistration;
     private CourseReg courseRegistration;
     private DepartmentReg departmentRegistration;
+    private SectionReg sectionRegistration;
+    private TuitionReg tuitionRegistration;
 
-    public CampusRegistrar(StudentReg studentRegistration, CourseReg courseRegistration, DepartmentReg departmentRegistration) {
+    public CampusRegistrar(StudentReg studentRegistration, CourseReg courseRegistration, DepartmentReg departmentRegistration, SectionReg sectionRegistration, TuitionReg tuitionRegistration) {
         this.studentRegistration = studentRegistration;
         this.courseRegistration = courseRegistration;
         this.departmentRegistration = departmentRegistration;
+        this.sectionRegistration = sectionRegistration;
+        this.tuitionRegistration = tuitionRegistration;
     }
 
 
@@ -67,8 +68,8 @@ public class CampusRegistrar {
         departmentRegistration.DisplayDepartments();
     }
 
-    public String saveDepartment(String departmentID, String departmentName, List<Instructor> InstructorList){
-        departmentRegistration.addDepartment(departmentID, departmentName, InstructorList);
+    public String saveDepartment(String departmentID, String departmentName, List<Instructor> instructorList, List<Section> sectionList){
+        departmentRegistration.addDepartment(departmentID, departmentName, instructorList, sectionList);
         return "Department Saved Successfully";
     }
 
@@ -84,6 +85,10 @@ public class CampusRegistrar {
 
 
     //Section
+
+
+
+    //Tuition
 
 
 

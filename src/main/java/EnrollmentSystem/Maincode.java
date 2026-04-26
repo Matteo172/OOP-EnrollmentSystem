@@ -8,8 +8,8 @@ import EnrollmentSystem.service.StudentRegistrationService;
 
 public class Maincode {
 
-    public static void clearscreen() {
-        System.out.print("\n".repeat(50));
+    public static void clearscreen(){
+        System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
@@ -36,7 +36,7 @@ public class Maincode {
 
 
         while(running){
-            System.out.println("╔══════════════════════════════════════════════════╗");
+            System.out.println("\n╔══════════════════════════════════════════════════╗");
             System.out.println("║              CAMPUS REGISTRAR MENU               ║");
             System.out.println("╠══════════════════════════════════════════════════╣");
             System.out.println("║   1. Student Registration                        ║");
@@ -48,126 +48,218 @@ public class Maincode {
             try{
                 System.out.print("\n Enter your choice: ");
                 int choice = scanner.nextInt();
+                scanner.nextLine();
 
                 switch(choice){
 
                     case 1:
-                        clearscreen();
-                        clearscreen();
-                        System.out.println("╔══════════════════════════════════════════════════╗");
-                        System.out.println("║               STUDENT REGISTRATION               ║");
-                        System.out.println("╠══════════════════════════════════════════════════╣");
-                        System.out.println("║   1. Save Student                                ║");
-                        System.out.println("║   2. Display Student                             ║");
-                        System.out.println("║   3. Update Student                              ║");
-                        System.out.println("║   4. Remove Student                              ║");
-                        System.out.println("║   5. Exit                                        ║");
-                        System.out.println("╚══════════════════════════════════════════════════╝");
-
-                        try{
-                            System.out.print("\n Enter your choice: ");
-                            int choice2 = scanner.nextInt();
-
-                            switch (choice2){
-                                case 1:
-                                    clearscreen();
-                                    System.out.println("\n====== Register New Student ======");
-                                    System.out.print("Enter ID Number: ");
-                                    int id = scanner.nextInt();
-                                    scanner.nextLine();
-
-                                    System.out.print("Enter Name: ");
-                                    String name = scanner.nextLine();
-
-                                    System.out.print("Enter Program: ");
-                                    String program = scanner.nextLine();
-
-                                    String result = campusRegistrar.saveStudent(new Student(id, name, program));
-                                    System.out.println("\n" + result);
-
-                                    System.out.println("Press Enter to continue");
-                                    scanner.nextLine();
-                                    break;
-                                case 2:
-                                    clearscreen();
-                                    campusRegistrar.displayAllStudent();
-                                    System.out.println("\nPress Enter to return...");
-                                    scanner.nextLine();
-                                    scanner.nextLine();
-                                    break;
-                                case 3:
-                                    clearscreen();
-                                    break;
-                                case 4:
-                                    clearscreen();
-                                    break;
-                                case 5:
-                                    clearscreen();
-                                    break;
-                                default:
-                                    System.out.println("Invalid Choice. Please Try again");
-                            }
-
-                        }catch(InputMismatchException e){
-                            System.out.println("\nInvalid input. Please enter your ID number.\n");
-                            System.out.println("Type Anything to continue.");
-                            scanner.nextLine();
-                            scanner.next();
+                        boolean studentMenu = true;
+                        while (studentMenu) {
                             clearscreen();
+                            System.out.println("\n╔══════════════════════════════════════════════════╗");
+                            System.out.println("║               STUDENT REGISTRATION               ║");
+                            System.out.println("╠══════════════════════════════════════════════════╣");
+                            System.out.println("║   1. Save Student                                ║");
+                            System.out.println("║   2. Display Student                             ║");
+                            System.out.println("║   3. Update Student                              ║");
+                            System.out.println("║   4. Remove Student                              ║");
+                            System.out.println("║   5. Exit                                        ║");
+                            System.out.println("╚══════════════════════════════════════════════════╝");
 
+                            try {
+                                System.out.print("\nEnter your choice: ");
+                                int choice2 = scanner.nextInt();
+
+                                switch (choice2) {
+                                    case 1:
+                                        clearscreen();
+                                        System.out.println("\n====== Register New Student ======");
+                                        System.out.print("Enter Student ID Number: ");
+                                        int sID = scanner.nextInt();
+                                        scanner.nextLine();
+
+                                        System.out.print("Enter Name: ");
+                                        String sName = scanner.nextLine();
+
+                                        System.out.print("Enter Program: ");
+                                        String sProgram = scanner.nextLine();
+
+                                        String sResult = campusRegistrar.saveStudent(new Student(sID, sName, sProgram));
+                                        System.out.println("\n" + sResult);
+
+                                        System.out.println("Press Enter to continue");
+                                        scanner.nextLine();
+                                        break;
+                                    case 2:
+                                        clearscreen();
+                                        campusRegistrar.displayAllStudent();
+                                        System.out.println("\nPress Enter to return...");
+                                        scanner.nextLine();
+                                        scanner.nextLine();
+                                        break;
+                                    case 3:
+                                        clearscreen();
+                                        System.out.println("\n====== Update Student Information ======");
+                                        System.out.print("Enter the ID of the student to update: ");
+                                        int updateID = scanner.nextInt();
+                                        scanner.nextLine();
+
+                                        System.out.print("Enter New Name: ");
+                                        String newName = scanner.nextLine();
+                                        System.out.print("Enter New Program: ");
+                                        String newProgram = scanner.nextLine();
+
+                                        Student updatedStudent = new Student(updateID, newName, newProgram);
+
+                                        System.out.println("\n" + campusRegistrar.updateStudent(updatedStudent));
+
+                                        System.out.println("\nPress Enter to return...");
+                                        scanner.nextLine();
+                                        break;
+                                    case 4:
+                                        clearscreen();
+                                        System.out.println("\n====== Remove Student ======");
+                                        System.out.print("Enter the ID of the student to remove: ");
+                                        int removeID = scanner.nextInt();
+                                        scanner.nextLine();
+
+                                        System.out.print("Are you sure you want to remove student " + removeID + "? (Y/N): ");
+                                        String confirm = scanner.nextLine();
+
+                                        if (confirm.equalsIgnoreCase("Y")) {
+                                            Student dummy = new Student(removeID, "", "");
+                                            System.out.println("\n" + campusRegistrar.removeStudent(dummy));
+                                        } else {
+                                            System.out.println("Removal Cancelled.");
+                                        }
+
+                                        System.out.println("\nPress Enter to return...");
+                                        scanner.nextLine();
+                                        break;
+                                    case 5:
+                                        clearscreen();
+                                        System.out.println("Returning to Main Menu...");
+                                        studentMenu = false;
+                                        break;
+                                    default:
+                                        System.out.println("\nInvalid Choice (1-5 only). Please Try again.");
+                                        System.out.println("Press Enter to continue...");
+                                        scanner.nextLine();
+                                        scanner.nextLine();
+                                        clearscreen();
+                                        break;
+                                }
+
+                            } catch (InputMismatchException e) {
+                                System.out.println("\nInvalid input. Please enter a number.\n");
+                                System.out.println("Press Enter to continue.");
+                                scanner.nextLine();
+                                scanner.nextLine();
+                                clearscreen();
+                            }
                         }
-
-
-                        break;
+                    break;
 
 
                     case 2:
-                        clearscreen();
-                        System.out.println("╔══════════════════════════════════════════════════╗");
-                        System.out.println("║               COURSE REGISTRATION                ║");
-                        System.out.println("╠══════════════════════════════════════════════════╣");
-                        System.out.println("║   1. Save Course                                 ║");
-                        System.out.println("║   2. Display Course                              ║");
-                        System.out.println("║   3. Update Course                               ║");
-                        System.out.println("║   4. Remove Course                               ║");
-                        System.out.println("║   5. Exit                                        ║");
-                        System.out.println("╚══════════════════════════════════════════════════╝");
-
-                        try{
-                            System.out.print("\n Enter your choice: ");
-                            int choice3 = scanner.nextInt();
-
-                            switch (choice3){
-                                case 1:
-                                    clearscreen();
-                                    break;
-                                case 2:
-                                    clearscreen();
-                                    break;
-                                case 3:
-                                    clearscreen();
-                                    break;
-                                case 4:
-                                    clearscreen();
-                                    break;
-                                case 5:
-                                    clearscreen();
-                                    break;
-                                default:
-                                    System.out.println("Invalid Choice. Please Try again");
-                            }
-
-                        }catch(InputMismatchException e){
-                            System.out.println("\nInvalid input.\n");
-                            System.out.println("Type Anything to continue.");
-                            scanner.nextLine();
-                            scanner.next();
+                        boolean courseMenu = true;
+                        while (courseMenu) {
                             clearscreen();
+                            System.out.println("╔══════════════════════════════════════════════════╗");
+                            System.out.println("║               COURSE REGISTRATION                ║");
+                            System.out.println("╠══════════════════════════════════════════════════╣");
+                            System.out.println("║   1. Save Course                                 ║");
+                            System.out.println("║   2. Display Course                              ║");
+                            System.out.println("║   3. Update Course                               ║");
+                            System.out.println("║   4. Remove Course                               ║");
+                            System.out.println("║   5. Exit                                        ║");
+                            System.out.println("╚══════════════════════════════════════════════════╝");
 
+                            try {
+                                System.out.print("\n Enter your choice: ");
+                                int choice3 = scanner.nextInt();
+                                scanner.nextLine();
+
+                                switch (choice3) {
+                                    case 1:
+                                        clearscreen();
+                                        System.out.println("\n====== Register New Course ======");
+                                        System.out.print("Enter Course ID: ");
+                                        String cId = scanner.nextLine();
+
+                                        System.out.print("Enter Course Name: ");
+                                        String cName = scanner.nextLine();
+
+                                        System.out.print("Enter Program: ");
+                                        String cProg = scanner.nextLine();
+
+                                        String result = campusRegistrar.saveCourse(new Course(cId, cName, cProg));
+                                        System.out.println("\n" + result);
+
+                                        System.out.println("\nPress Enter to continue...");
+                                        scanner.nextLine();
+                                        break;
+                                    case 2:
+                                        clearscreen();
+                                        campusRegistrar.displayAllCourse();
+                                        System.out.println("\nPress Enter to return...");
+                                        scanner.nextLine();
+                                        break;
+                                    case 3:
+                                        clearscreen();
+                                        System.out.println("\n====== Update Course Information ======");
+                                        System.out.print("Enter the ID of the course to update: ");
+                                        String updateCID = scanner.nextLine();
+
+                                        System.out.print("Enter New Course Name: ");
+                                        String newCName = scanner.nextLine();
+                                        System.out.print("Enter New Program: ");
+                                        String newCProg = scanner.nextLine();
+
+                                        System.out.println("\n" + campusRegistrar.updateCourse(new Course(updateCID, newCName, newCProg)));
+                                        System.out.println("\nPress Enter to return...");
+                                        scanner.nextLine();
+                                        break;
+                                    case 4:
+                                        clearscreen();
+                                        System.out.println("\n====== Remove Course ======");
+                                        System.out.print("Enter the ID of the course to remove: ");
+                                        String removeCID = scanner.nextLine();
+
+                                        System.out.print("Are you sure? (Y/N): ");
+                                        if (scanner.nextLine().equalsIgnoreCase("Y")) {
+                                            System.out.println("\n" + campusRegistrar.removeCourse(new Course(removeCID, "", "")));
+                                        } else {
+                                            System.out.println("Action cancelled.");
+                                        }
+                                        System.out.println("\nPress Enter to return...");
+                                        scanner.nextLine();
+                                        break;
+                                    case 5:
+                                        clearscreen();
+                                        System.out.println("Returning to Main Menu...");
+                                        courseMenu = false;
+                                        break;
+                                    default:
+                                        System.out.println("\nInvalid Choice (1-5 only). Please Try again.");
+                                        System.out.println("Press Enter to continue...");
+                                        scanner.nextLine();
+                                        scanner.nextLine();
+                                        clearscreen();
+                                        break;
+                                }
+
+                            } catch (InputMismatchException e) {
+                                System.out.println("\nInvalid input. Please enter a number .\n");
+                                System.out.println("Press Enter to continue.");
+                                scanner.nextLine();
+                                scanner.nextLine();
+                                clearscreen();
+
+                            }
                         }
 
-
-                        break;
+                    break;
 
 
                     case 3:
@@ -175,10 +267,10 @@ public class Maincode {
                         System.out.println("╔══════════════════════════════════════════════════╗");
                         System.out.println("║             DEPARTMENT REGISTRATION              ║");
                         System.out.println("╠══════════════════════════════════════════════════╣");
-                        System.out.println("║   1. Save Course                                 ║");
-                        System.out.println("║   2. Display Course                              ║");
-                        System.out.println("║   3. Update Course                               ║");
-                        System.out.println("║   4. Remove Course                               ║");
+                        System.out.println("║   1. Save Department                             ║");
+                        System.out.println("║   2. Display Department                          ║");
+                        System.out.println("║   3. Update Department                           ║");
+                        System.out.println("║   4. Remove Department                           ║");
                         System.out.println("║   5. Exit                                        ║");
                         System.out.println("╚══════════════════════════════════════════════════╝");
 

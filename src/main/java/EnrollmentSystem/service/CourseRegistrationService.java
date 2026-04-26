@@ -4,12 +4,16 @@ import EnrollmentSystem.model.Course;
 
 public class CourseRegistrationService implements CourseReg {
 
-    Scanner scanner = new Scanner(System.in);
-
     public List<Course> courses = new ArrayList<>();
 
     @Override
     public void addCourse(Course course){
+        for(Course c : courses) {
+            if(c.getCourseID().equals(course.getCourseID())){
+                System.out.println("Error: Course ID " + course.getCourseID() + " already exists.");
+                return;
+            }
+        }
         courses.add(course);
     }
 
@@ -18,6 +22,7 @@ public class CourseRegistrationService implements CourseReg {
         if(courses.isEmpty()){
             System.out.println("No Course/s Found.");
         }else{
+            System.out.println("\n====== LIST OF COURSE ======");
             System.out.println(courses);
         }
     }
@@ -27,14 +32,7 @@ public class CourseRegistrationService implements CourseReg {
     public void UpdateCourse(Course course) {
         for (int i = 0; i < courses.size(); i++) {
             if (courses.get(i).getCourseID().equals(course.getCourseID())) {
-                scanner.nextLine();
-                System.out.print("Enter Name: ");
-                String name = scanner.nextLine();
-
-                System.out.print("Enter Program: ");
-                String program = scanner.nextLine();
-
-                courses.set(i, new Course(course.getCourseID(), name, program));
+                courses.set(i, course);
                 break;
             }
         }

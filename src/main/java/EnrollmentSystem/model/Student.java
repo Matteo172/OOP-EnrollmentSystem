@@ -17,11 +17,11 @@ public class Student extends Person{
         this.studentProgram = studentProgram;
     }
 
-    public String getstudentProgram(){
+    public String getStudentProgram(){
         return studentProgram;
     }
 
-    public void setstudentProgram(String studentProgram){
+    public void setStudentProgram(String studentProgram){
         this.studentProgram = studentProgram;
     }
 
@@ -31,6 +31,6 @@ public class Student extends Person{
 
     @Override
     public String toString() {
-        return "ID: " + getID() + " | Name: " + getName() + " | Program: " + getstudentProgram();
+        return "ID: " + getID() + " | Name: " + getName() + " | Program: " + getStudentProgram();
     }
 }

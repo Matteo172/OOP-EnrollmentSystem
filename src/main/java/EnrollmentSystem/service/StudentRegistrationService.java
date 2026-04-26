@@ -4,12 +4,17 @@ import java.util.*;
 
 public class StudentRegistrationService implements StudentReg {
 
-    Scanner scanner = new Scanner(System.in);
     public List<Student> students = new ArrayList<>();
 
     //Add
     @Override
     public void addStudent(Student student){
+        for (Student s : students) {
+            if (s.getID() == student.getID()) {
+                System.out.println("Error: Student ID " + student.getID() + " already exists.");
+                return;
+            }
+        }
         students.add(student);
     }
 
@@ -19,7 +24,7 @@ public class StudentRegistrationService implements StudentReg {
         if(students.isEmpty()){
             System.out.println("No Student/s Found.");
         }else{
-            System.out.println("\n====== ENROLLED STUDENTS ======");
+            System.out.println("\n====== LIST OF STUDENTS ======");
             System.out.println(students);
         }
     }
@@ -29,14 +34,7 @@ public class StudentRegistrationService implements StudentReg {
     public void UpdateStudent(Student student) {
         for (int i = 0; i < students.size(); i++) {
             if (students.get(i).getID() == (student.getID())) {
-                scanner.nextLine();
-                System.out.print("Enter Name: ");
-                String name = scanner.nextLine();
-
-                System.out.print("Enter Program: ");
-                String program = scanner.nextLine();
-
-                students.set(i, new Student(student.getID(), name, program));
+                students.set(i, student);
                 break;
             }
         }
