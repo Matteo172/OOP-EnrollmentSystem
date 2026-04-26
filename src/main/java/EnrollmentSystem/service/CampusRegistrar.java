@@ -85,10 +85,31 @@ public class CampusRegistrar {
 
 
     //Section
+    public void addSection(Section section) {
+        sectionRegistration.addSection(section);
+    }
 
+    public void enrollStudent(Student student, Section section) throws SectionFullException {
+        sectionRegistration.enrollStudentInSection(student, section);
+    }
+
+    public void displaySectionDetails(Section section) {
+        sectionRegistration.displaySectionDetails(section);
+    }
 
 
     //Tuition
+    public double calculateFee(int units, double discountRate) {
+        return tuitionRegistration.calculateTuitionFee(units, discountRate);
+    }
+
+    public void makePayment(double amount) {
+        tuitionRegistration.makePayment(amount);
+    }
+
+    public double getRemainingBalance() {
+        return tuitionRegistration.getRemainingBalance();
+    }
 
 
 

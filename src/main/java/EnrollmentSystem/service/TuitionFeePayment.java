@@ -11,11 +11,20 @@ public class TuitionFeePayment implements TuitionReg {
         if(discountRate != 0){
             totalTuition = totalTuition - (totalTuition * discountRate);
         }
+        Balance = totalTuition;
         return totalTuition;
     }
 
     public void makePayment(double amount){
-        Balance = totalTuition - amount;
+        if (amount <= 0) {
+            System.out.println("Error: Payment amount must be greater than zero.");
+            return;
+        }
+        if (amount > Balance) {
+            System.out.println("Error: Payment exceeds remaining balance. Remaining balance is: " + Balance);
+            return;
+        }
+        Balance = Balance - amount;
     }
 
     public double getRemainingBalance(){

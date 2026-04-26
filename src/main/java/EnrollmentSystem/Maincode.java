@@ -1,10 +1,7 @@
 package EnrollmentSystem;
 import java.util.*;
 import EnrollmentSystem.model.*;
-import EnrollmentSystem.service.CampusRegistrar;
-import EnrollmentSystem.service.CourseRegistrationService;
-import EnrollmentSystem.service.DepartmentRegistrationService;
-import EnrollmentSystem.service.StudentRegistrationService;
+import EnrollmentSystem.service.*;
 
 public class Maincode {
 
@@ -20,8 +17,10 @@ public class Maincode {
         StudentRegistrationService studentRegistration = new StudentRegistrationService();
         CourseRegistrationService courseRegistration = new CourseRegistrationService();
         DepartmentRegistrationService  departmentRegistration = new DepartmentRegistrationService();
+        SectionRegistrationService sectionRegistration = new SectionRegistrationService();
+        TuitionFeePayment tuitionRegistration = new TuitionFeePayment();
 
-        CampusRegistrar campusRegistrar = new CampusRegistrar(studentRegistration, courseRegistration, departmentRegistration);
+        CampusRegistrar campusRegistrar = new CampusRegistrar(studentRegistration, courseRegistration, departmentRegistration, sectionRegistration, tuitionRegistration);
 
         boolean running = true;
 
