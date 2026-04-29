@@ -1,24 +1,34 @@
 package EnrollmentSystem.service;
-import EnrollmentSystem.model.Course;
 import EnrollmentSystem.model.Student;
-
-
 import java.util.*;
 
-public class StudentRegistrationImpl implements StudentRegistration {
+public class StudentRegistrationService implements StudentReg {
 
-    Scanner scanner = new Scanner(System.in);
-    public ArrayList<Student> students = new ArrayList();
+    public List<Student> students = new ArrayList<>();
 
+    //Add
     @Override
     public void addStudent(Student student){
+        for (Student s : students) {
+            if (s.getID() == student.getID()) {
+                System.out.println("Error: Student ID " + student.getID() + " already exists.");
+                return;
+            }
+        }
         students.add(student);
     }
 
     //Display
     @Override
     public void DisplayStudent(){
-        System.out.println(students);
+        if(students.isEmpty()){
+            System.out.println("No Student/s Found.");
+        }else{
+            System.out.println("\n====== LIST OF STUDENTS ======");
+            for(Student s : students){
+                System.out.println(s);
+            }
+        }
     }
 
     //Update
@@ -26,13 +36,7 @@ public class StudentRegistrationImpl implements StudentRegistration {
     public void UpdateStudent(Student student) {
         for (int i = 0; i < students.size(); i++) {
             if (students.get(i).getID() == (student.getID())) {
-                System.out.print("Enter Name: ");
-                String name = scanner.next();
-
-                System.out.print("Enter Program: ");
-                String program = scanner.next();
-
-                students.set(i, new Student(student.getID(), name, program));
+                students.set(i, student);
                 break;
             }
         }
@@ -48,7 +52,5 @@ public class StudentRegistrationImpl implements StudentRegistration {
             }
         }
     }
-
-
 
 }

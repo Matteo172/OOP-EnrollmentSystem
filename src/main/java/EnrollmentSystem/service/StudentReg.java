@@ -2,7 +2,7 @@ package EnrollmentSystem.service;
 
 import EnrollmentSystem.model.Student;
 
-public interface StudentRegistration {
+public interface StudentReg {
     void addStudent(Student student);
     void DisplayStudent();
     void UpdateStudent(Student student);

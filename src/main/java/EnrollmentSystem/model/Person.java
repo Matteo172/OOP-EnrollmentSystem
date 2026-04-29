@@ -5,7 +5,7 @@ public abstract class Person {
     private int ID;
     private String Name;
 
-    public Person(String Name, int ID){
+    public Person(int ID, String Name){
         this.Name = Name;
         this.ID = ID;
     }
@@ -29,7 +29,6 @@ public abstract class Person {
         this.Name = Name;
     }
 
-    public abstract void mainTask();
-
+    protected abstract void mainTask();
 
 }

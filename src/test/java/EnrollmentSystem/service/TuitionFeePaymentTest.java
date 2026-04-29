@@ -34,6 +34,20 @@ class TuitionFeePaymentTest {
     }
 
     @Test
+    void shouldRejectNegativePayment(){
+        tuitionFeePayment.calculateTuitionFee(3, 0);
+        tuitionFeePayment.makePayment(-500);
+        assertEquals(3000.0, tuitionFeePayment.getRemainingBalance());
+    }
+
+    @Test
+    void shouldRejectOverpayment() {
+        tuitionFeePayment.calculateTuitionFee(3, 0);
+        tuitionFeePayment.makePayment(9999.0);
+        assertEquals(3000.0, tuitionFeePayment.getRemainingBalance());
+    }
+
+    @Test
     void shouldCheckIfFullyPaid(){
 
         tuitionFeePayment.calculateTuitionFee(3,0.10);

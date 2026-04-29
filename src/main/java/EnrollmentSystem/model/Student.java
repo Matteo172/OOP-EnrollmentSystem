@@ -2,27 +2,27 @@ package EnrollmentSystem.model;
 
 public class Student extends Person{
 
-    private String Sprogram;
+    private String studentProgram;
 
     public Student(){
 
     }
 
-    public Student(String Name, int ID) {
-        super(Name, ID);
+    public Student(int ID, String Name) {
+        super(ID, Name);
     }
 
-    public Student(int ID, String Name, String Sprogram) {
-        super(Name, ID);
-        this.Sprogram = Sprogram;
+    public Student(int ID, String Name, String studentProgram) {
+        super(ID, Name);
+        this.studentProgram = studentProgram;
     }
 
-    public String getSprogram(){
-        return Sprogram;
+    public String getStudentProgram(){
+        return studentProgram;
     }
 
-    public void setSprogram(String Sprogram){
-        this.Sprogram = Sprogram;
+    public void setStudentProgram(String studentProgram){
+        this.studentProgram = studentProgram;
     }
 
     public void mainTask(){
@@ -31,10 +31,6 @@ public class Student extends Person{
 
     @Override
     public String toString() {
-        return "Student{" +
-                "Sprogram='" + Sprogram + '\'' +
-                '}';
+        return "ID: " + getID() + " | Name: " + getName() + " | Program: " + getStudentProgram();
     }
-
-
 }
