@@ -25,7 +25,9 @@ public class StudentRegistrationService implements StudentReg {
             System.out.println("No Student/s Found.");
         }else{
             System.out.println("\n====== LIST OF STUDENTS ======");
-            System.out.println(students);
+            for(Student s : students){
+                System.out.println(s);
+            }
         }
     }
 

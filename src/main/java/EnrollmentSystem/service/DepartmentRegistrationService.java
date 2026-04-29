@@ -26,7 +26,36 @@ public class DepartmentRegistrationService implements DepartmentReg {
             System.out.println("No Department/s Found.");
         }else{
             System.out.println("\n====== LIST OF DEPARTMENTS ======");
-            System.out.println(departments);
+            for (Department d : departments) {
+                System.out.println(d);
+            }
+        }
+    }
+
+    @Override
+    public void viewAllDepartmentsWithSections() {
+        if (departments.isEmpty()) {
+            System.out.println("No Departments Found.");
+            return;
+        }
+
+        System.out.println("\n====== ALL DEPARTMENTS AND SECTIONS ======");
+        for (Department d : departments) {
+            System.out.println("\nDepartment  : " + d.getDepartmentName()
+                    + " | ID: " + d.getDepartmentID());
+            System.out.println("==============================");
+
+            if (d.getSectionList().isEmpty()) {
+                System.out.println("  No sections found.");
+            } else {
+                for (Section s : d.getSectionList()) {
+                    System.out.println("  Section ID : " + s.getSectionID());
+                    System.out.println("  Course     : " + s.getCourse().getCourseName());
+                    System.out.println("  Capacity   : " + s.getEnrolledStudents().size()
+                            + "/" + s.getMaxCapacity());
+                    System.out.println("  ------------------------------");
+                }
+            }
         }
     }
 

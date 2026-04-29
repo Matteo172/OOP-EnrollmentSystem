@@ -1,6 +1,7 @@
 package EnrollmentSystem.service;
 import EnrollmentSystem.model.Section;
 import EnrollmentSystem.model.Student;
+import EnrollmentSystem.model.Department;
 import java.util.*;
 
 public class SectionRegistrationService implements SectionReg{
@@ -21,7 +22,8 @@ public class SectionRegistrationService implements SectionReg{
     @Override
     public void enrollStudentInSection(Student student, Section section) throws SectionFullException {
         if (section.getEnrolledStudents().size() >= section.getMaxCapacity()) {
-            throw new SectionFullException("Enrollment failed: Section " + section.getSectionID() + " is full. (Max: " + section.getMaxCapacity() + ")");
+            throw new SectionFullException("Enrollment failed: Section " + section.getSectionID() + " is full. (Max: "
+                     + section.getMaxCapacity() + ")");
         }
         section.getEnrolledStudents().add(student);
         System.out.println("Student " + student.getName() + " enrolled in " + section.getSectionID());
@@ -32,7 +34,11 @@ public class SectionRegistrationService implements SectionReg{
         System.out.println("\n====== SECTION DETAILS ======");
         System.out.println("Section ID  : " + section.getSectionID());
         System.out.println("Course      : " + section.getCourse().getCourseName());
-        System.out.println("Instructor  : " + section.getInstructor().getName());
+        if (section.getInstructor() != null) {
+            System.out.println("Instructor  : " + section.getInstructor().getName());
+        } else {
+            System.out.println("Instructor  : Not Assigned");
+        }
         System.out.println("Capacity    : " + section.getEnrolledStudents().size() + "/" + section.getMaxCapacity());
         System.out.println("Students    :");
         if (section.getEnrolledStudents().isEmpty()) {
@@ -45,15 +51,34 @@ public class SectionRegistrationService implements SectionReg{
     }
 
     @Override
-    public void displayAllSections() {
+    public void displayAllSectionsWithDetails() {
         if (sections.isEmpty()) {
             System.out.println("No Sections Found.");
-        } else {
-            System.out.println("\n====== LIST OF SECTIONS ======");
-            for (Section s : sections) {
-                System.out.println(s);
+            return;
+        }
+
+        System.out.println("\n====== ALL SECTIONS WITH DETAILS ======");
+        for (Section s : sections) {
+            System.out.println("\nSection ID  : " + s.getSectionID());
+            System.out.println("Course      : " + s.getCourse().getCourseName());
+            if (s.getInstructor() != null) {
+                System.out.println("Instructor  : " + s.getInstructor().getName());
+            } else {
+                System.out.println("Instructor  : Not Assigned");
             }
+            System.out.println("Capacity    : " + s.getEnrolledStudents().size()
+                    + "/" + s.getMaxCapacity());
+            System.out.println("Students    :");
+            if (s.getEnrolledStudents().isEmpty()) {
+                System.out.println("  No students enrolled.");
+            } else {
+                for (Student st : s.getEnrolledStudents()) {
+                    System.out.println("  - " + st);
+                }
+            }
+            System.out.println("==============================");
         }
     }
+
 
 }

@@ -20,7 +20,8 @@ public class Maincode {
         SectionRegistrationService sectionRegistration = new SectionRegistrationService();
         TuitionFeePayment tuitionRegistration = new TuitionFeePayment();
 
-        CampusRegistrar campusRegistrar = new CampusRegistrar(studentRegistration, courseRegistration, departmentRegistration, sectionRegistration, tuitionRegistration);
+        CampusRegistrar campusRegistrar = new CampusRegistrar(studentRegistration, courseRegistration,
+                departmentRegistration, sectionRegistration, tuitionRegistration);
 
         boolean running = true;
 
@@ -41,6 +42,8 @@ public class Maincode {
             System.out.println("║   1. Student Registration                        ║");
             System.out.println("║   2. Course Registration                         ║");
             System.out.println("║   3. Department Registration                     ║");
+            System.out.println("║   4. Section Registration                        ║");
+            System.out.println("║   5. Tuition Fee Payment                         ║");
             System.out.println("║   4. Exit                                        ║");
             System.out.println("╚══════════════════════════════════════════════════╝");
 
@@ -122,7 +125,7 @@ public class Maincode {
                                         int removeID = scanner.nextInt();
                                         scanner.nextLine();
 
-                                        System.out.print("Are you sure you want to remove student " + removeID + "? (Y/N): ");
+                                        System.out.print("Are you sure you want to remove student " + removeID+ "? (Y/N): ");
                                         String confirm = scanner.nextLine();
 
                                         if (confirm.equalsIgnoreCase("Y")) {
@@ -215,7 +218,8 @@ public class Maincode {
                                         System.out.print("Enter New Program: ");
                                         String newCProg = scanner.nextLine();
 
-                                        System.out.println("\n" + campusRegistrar.updateCourse(new Course(updateCID, newCName, newCProg)));
+                                        System.out.println("\n" + campusRegistrar.updateCourse(new Course(updateCID,
+                                                newCName, newCProg)));
                                         System.out.println("\nPress Enter to return...");
                                         scanner.nextLine();
                                         break;
@@ -227,7 +231,7 @@ public class Maincode {
 
                                         System.out.print("Are you sure? (Y/N): ");
                                         if (scanner.nextLine().equalsIgnoreCase("Y")) {
-                                            System.out.println("\n" + campusRegistrar.removeCourse(new Course(removeCID, "", "")));
+                                            System.out.println("\n" + campusRegistrar.removeCourse(new Course(removeCID,"", "")));
                                         } else {
                                             System.out.println("Action cancelled.");
                                         }

@@ -68,6 +68,10 @@ public class CampusRegistrar {
         departmentRegistration.DisplayDepartments();
     }
 
+    public void displayAllDepartmentwithSections(){
+        departmentRegistration.viewAllDepartmentsWithSections();
+    }
+
     public String saveDepartment(String departmentID, String departmentName, List<Instructor> instructorList, List<Section> sectionList){
         departmentRegistration.addDepartment(departmentID, departmentName, instructorList, sectionList);
         return "Department Saved Successfully";
@@ -85,6 +89,14 @@ public class CampusRegistrar {
 
 
     //Section
+    public void displaySectionDetails(Section section) {
+        sectionRegistration.displaySectionDetails(section);
+    }
+
+    public void displayAllSectionsWithDetails() {
+        sectionRegistration.displayAllSectionsWithDetails();
+    }
+
     public void addSection(Section section) {
         sectionRegistration.addSection(section);
     }
@@ -93,9 +105,6 @@ public class CampusRegistrar {
         sectionRegistration.enrollStudentInSection(student, section);
     }
 
-    public void displaySectionDetails(Section section) {
-        sectionRegistration.displaySectionDetails(section);
-    }
 
 
     //Tuition
@@ -109,6 +118,10 @@ public class CampusRegistrar {
 
     public double getRemainingBalance() {
         return tuitionRegistration.getRemainingBalance();
+    }
+
+    public boolean isFullyPaid() {
+        return tuitionRegistration.isFullyPaid();
     }
 
 

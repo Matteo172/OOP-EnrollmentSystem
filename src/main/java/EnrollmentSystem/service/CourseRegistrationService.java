@@ -23,7 +23,9 @@ public class CourseRegistrationService implements CourseReg {
             System.out.println("No Course/s Found.");
         }else{
             System.out.println("\n====== LIST OF COURSE ======");
-            System.out.println(courses);
+            for(Course c : courses) {
+                System.out.println(c);
+            }
         }
     }
 
