@@ -1,3 +1,4 @@
+
 package EnrollmentSystem.service;
 
 import EnrollmentSystem.model.*;
@@ -10,13 +11,17 @@ public class CampusRegistrar {
     private DepartmentReg departmentRegistration;
     private SectionReg sectionRegistration;
     private TuitionReg tuitionRegistration;
+    private InstructorReg instructorRegistration;
 
-    public CampusRegistrar(StudentReg studentRegistration, CourseReg courseRegistration, DepartmentReg departmentRegistration, SectionReg sectionRegistration, TuitionReg tuitionRegistration) {
+    public CampusRegistrar(StudentReg studentRegistration, CourseReg courseRegistration, DepartmentReg
+            departmentRegistration, SectionReg sectionRegistration, TuitionReg tuitionRegistration,
+                           InstructorReg instructorRegistration) {
         this.studentRegistration = studentRegistration;
         this.courseRegistration = courseRegistration;
         this.departmentRegistration = departmentRegistration;
         this.sectionRegistration = sectionRegistration;
         this.tuitionRegistration = tuitionRegistration;
+        this.instructorRegistration = instructorRegistration;
     }
 
 
@@ -123,6 +128,26 @@ public class CampusRegistrar {
     public boolean isFullyPaid() {
         return tuitionRegistration.isFullyPaid();
     }
+
+
+
+    //Instructor
+    public void addInstructor(Instructor instructor) {
+        instructorRegistration.addInstructor(instructor);
+    }
+
+    public void assignInstructorToSection(Instructor instructor, Section section) {
+        instructorRegistration.assignInstructorToSection(instructor, section);
+    }
+
+    public void getInstructorDetails(int instructorID) {
+        instructorRegistration.getInstructorDetails(instructorID);
+    }
+
+    public void displayAllInstructors() {
+        instructorRegistration.displayAllInstructors();
+    }
+
 
 
 
