@@ -20,23 +20,23 @@ public class DepartmentRegistrationServiceTest {
         departmentService = new DepartmentRegistrationService();
         instructorList = new ArrayList<>();
         sectionList = new ArrayList<>();
-        course = new Course("C01", "Programming", "BSIT");
-        Instructor instructor = new Instructor(1, "Mr. Santos", "Programming");
-        section1 = new Section("BSIT-1A", course, instructor, 30);
-        department1 = new Department("D01", "College of Computer Studies", instructorList, sectionList);
-        department2 = new Department("D02", "College of Engineering", new ArrayList<>(), new ArrayList<>());
+        course = new Course("C01", "System Analysis and Design", "BSIT");
+        Instructor instructor = new Instructor(1, "Mr. Santos", "Project Management");
+        section1 = new Section("IT2C", course, instructor, 30);
+        department1 = new Department("D01", "College of Information Technology and Engineering", instructorList, sectionList);
+        department2 = new Department("D02", "College of Nursing", new ArrayList<>(), new ArrayList<>());
     }
 
     @Test
     void shouldAddDepartmentSuccessfully() {
-        departmentService.addDepartment("D01", "College of Computer Studies", instructorList, sectionList);
+        departmentService.addDepartment("D01", "College of Information Technology and Engineering", instructorList, sectionList);
         assertEquals(1, departmentService.departments.size());
     }
 
     @Test
     void shouldRejectDuplicateDepartmentID() {
-        departmentService.addDepartment("D01", "College of Computer Studies", instructorList, sectionList);
-        departmentService.addDepartment("D01", "Duplicate", new ArrayList<>(), new ArrayList<>());
+        departmentService.addDepartment("D01", "College of Information Technology and Engineering", instructorList, sectionList);
+        departmentService.addDepartment("D01", "College of Education, Arts, and Science", new ArrayList<>(), new ArrayList<>());
         assertEquals(1, departmentService.departments.size());
     }
 
@@ -48,7 +48,7 @@ public class DepartmentRegistrationServiceTest {
 
     @Test
     void shouldDisplayDepartmentsWhenNotEmpty() {
-        departmentService.addDepartment("D01", "College of Computer Studies", instructorList, sectionList);
+        departmentService.addDepartment("D01", "College of Information Technology and Engineering", instructorList, sectionList);
         departmentService.DisplayDepartments();
         assertEquals(1, departmentService.departments.size());
     }
@@ -62,43 +62,43 @@ public class DepartmentRegistrationServiceTest {
     @Test
     void shouldDisplayDepartmentsWithSections() {
         sectionList.add(section1);
-        departmentService.addDepartment("D01", "College of Computer Studies", instructorList, sectionList);
+        departmentService.addDepartment("D01", "College of Information Technology and Engineering", instructorList, sectionList);
         departmentService.viewAllDepartmentsWithSections();
         assertEquals(1, departmentService.departments.size());
     }
 
     @Test
     void shouldDisplayDepartmentWithNoSections() {
-        departmentService.addDepartment("D01", "College of Computer Studies", instructorList, new ArrayList<>());
+        departmentService.addDepartment("D01", "College of Information Technology and Engineering", instructorList, new ArrayList<>());
         departmentService.viewAllDepartmentsWithSections();
         assertEquals(1, departmentService.departments.size());
     }
 
     @Test
     void shouldUpdateDepartmentSuccessfully() {
-        departmentService.addDepartment("D01", "College of Computer Studies", instructorList, sectionList);
-        Department updated = new Department("D01", "CCS Updated", instructorList, sectionList);
+        departmentService.addDepartment("D01", "College of Information Technology and Engineering", instructorList, sectionList);
+        Department updated = new Department("D01", "CITE Updated", instructorList, sectionList);
         departmentService.UpdateDepartment(updated);
-        assertEquals("CCS Updated", departmentService.departments.get(0).getDepartmentName());
+        assertEquals("CITE Updated", departmentService.departments.get(0).getDepartmentName());
     }
 
     @Test
     void shouldNotCrashWhenUpdatingNonExistentDepartment() {
-        Department nonExistent = new Department("D99", "Ghost", instructorList, sectionList);
+        Department nonExistent = new Department("D99", "College of Education, Arts and Sciences", instructorList, sectionList);
         departmentService.UpdateDepartment(nonExistent);
         assertEquals(0, departmentService.departments.size());
     }
 
     @Test
     void shouldRemoveDepartmentSuccessfully() {
-        departmentService.addDepartment("D01", "College of Computer Studies", instructorList, sectionList);
+        departmentService.addDepartment("D01", "College of Information Technology and Engineering", instructorList, sectionList);
         departmentService.RemoveDepartment(department1);
         assertEquals(0, departmentService.departments.size());
     }
 
     @Test
     void shouldNotCrashWhenRemovingNonExistentDepartment() {
-        Department nonExistent = new Department("D99", "Ghost", instructorList, sectionList);
+        Department nonExistent = new Department("D99", "College of Education, Arts and Sciences", instructorList, sectionList);
         departmentService.RemoveDepartment(nonExistent);
         assertEquals(0, departmentService.departments.size());
     }

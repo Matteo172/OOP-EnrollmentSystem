@@ -61,7 +61,7 @@ public class StudentRegistrationServiceTest {
 
     @Test
     void shouldNotCrashWhenRemovingNonExistentStudent() {
-        Student student = new Student(99, "Ghost", "BSIT");
+        Student student = new Student(99, "Karen", "BSIT");
         studentService.RemoveStudent(student);
         assertEquals(0, studentService.students.size());
     }
