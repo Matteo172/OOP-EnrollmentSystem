@@ -24,7 +24,7 @@ public class StudentRegistrationServiceTest {
     @Test
     void shouldRejectDuplicateStudentID() {
         Student student1 = new Student(1, "Alice", "BSIT");
-        Student student2 = new Student(1, "Bob", "BSCS"); // same ID
+        Student student2 = new Student(1, "Bob", "BSCS");
         studentService.addStudent(student1);
         studentService.addStudent(student2);
         assertEquals(1, studentService.students.size());
@@ -42,6 +42,27 @@ public class StudentRegistrationServiceTest {
     void shouldUpdateStudentSuccessfully() {
         studentService.addStudent(new Student(1, "Alice", "BSIT"));
         studentService.UpdateStudent(new Student(1, "Alice Updated", "BSCS"));
-        assertEquals("Alice Updated", studentService.students.get(0).getName());
+        assertEquals("Alice Updated", studentService.students.getFirst().getName());
+    }
+
+    @Test
+    void shouldDisplayNoStudentsWhenEmpty() {
+        assertEquals(0, studentService.students.size());
+        studentService.DisplayStudent();
+    }
+
+    @Test
+    void shouldDisplayStudentsWhenNotEmpty() {
+        studentService.addStudent(new Student(1, "Alice", "BSIT"));
+        studentService.addStudent(new Student(2, "Bob", "BSCS"));
+        assertEquals(2, studentService.students.size());
+        studentService.DisplayStudent();
+    }
+
+    @Test
+    void shouldNotCrashWhenRemovingNonExistentStudent() {
+        Student student = new Student(99, "Ghost", "BSIT");
+        studentService.RemoveStudent(student);
+        assertEquals(0, studentService.students.size());
     }
 }

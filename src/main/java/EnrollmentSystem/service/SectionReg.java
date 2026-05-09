@@ -1,6 +1,5 @@
 package EnrollmentSystem.service;
 
-import EnrollmentSystem.model.Department;
 import EnrollmentSystem.model.Section;
 import EnrollmentSystem.model.Student;
 

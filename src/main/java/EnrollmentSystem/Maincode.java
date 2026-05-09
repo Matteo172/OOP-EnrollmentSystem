@@ -19,9 +19,10 @@ public class Maincode {
         DepartmentRegistrationService  departmentRegistration = new DepartmentRegistrationService();
         SectionRegistrationService sectionRegistration = new SectionRegistrationService();
         TuitionFeePayment tuitionRegistration = new TuitionFeePayment();
+        InstructorRegistrationService instructorRegistration = new InstructorRegistrationService();
 
         CampusRegistrar campusRegistrar = new CampusRegistrar(studentRegistration, courseRegistration,
-                departmentRegistration, sectionRegistration, tuitionRegistration);
+                departmentRegistration, sectionRegistration, tuitionRegistration, instructorRegistration);
 
         boolean running = true;
 
