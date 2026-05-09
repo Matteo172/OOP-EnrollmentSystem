@@ -1,7 +1,6 @@
 
 package EnrollmentSystem.service;
 
-import EnrollmentSystem.SectionFullException.SectionFullException;
 import EnrollmentSystem.model.*;
 
 import java.util.List;

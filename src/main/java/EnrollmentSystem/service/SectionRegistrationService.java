@@ -1,8 +1,7 @@
 package EnrollmentSystem.service;
-import EnrollmentSystem.SectionFullException.SectionFullException;
 import EnrollmentSystem.model.Section;
 import EnrollmentSystem.model.Student;
-
+import EnrollmentSystem.model.Department;
 import java.util.*;
 
 public class SectionRegistrationService implements SectionReg{

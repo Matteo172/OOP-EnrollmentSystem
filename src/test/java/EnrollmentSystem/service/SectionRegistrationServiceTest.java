@@ -1,6 +1,5 @@
 package EnrollmentSystem.service;
 
-import EnrollmentSystem.SectionFullException.SectionFullException;
 import EnrollmentSystem.model.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,9 +16,9 @@ class SectionRegistrationServiceTest {
     @BeforeEach
     void setup() {
         sectionService = new SectionRegistrationService();
-        course = new Course("SYSDE", "System Analysis and Design", "BSIT");
+        course = new Course("C01", "Programming", "BSIT");
         instructor = new Instructor(1, "Mr. Santos");
-        testSection = new Section("IT2C", course, instructor, 2);
+        testSection = new Section("BSIT-1A", course, instructor, 2);
         student1 = new Student(1, "Alice", "BSIT");
         student2 = new Student(2, "Bob", "BSIT");
         student3 = new Student(3, "Charlie", "BSIT");
@@ -77,7 +76,7 @@ class SectionRegistrationServiceTest {
 
     @Test
     void shouldDisplaySectionDetailsWithNoInstructor() {
-        Section noInstructorSection = new Section("IT2F", course, null, 30);
+        Section noInstructorSection = new Section("BSIT-2A", course, null, 30);
         sectionService.displaySectionDetails(noInstructorSection);
     }
 

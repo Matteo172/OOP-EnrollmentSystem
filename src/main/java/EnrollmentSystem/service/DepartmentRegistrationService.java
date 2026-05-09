@@ -9,8 +9,7 @@ public class DepartmentRegistrationService implements DepartmentReg {
     public List<Department> departments = new ArrayList<>();
 
     @Override
-    public void addDepartment(String departmentID, String departmentName, List<Instructor> instructorList,
-                              List<Section> sectionList) {
+    public void addDepartment(String departmentID, String departmentName, List<Instructor> instructorList, List<Section> sectionList) {
         for (Department d : departments) {
             if (d.getDepartmentID().equals(departmentID)) {
                 System.out.println("Error: Department ID " + departmentID + " already exists.");
