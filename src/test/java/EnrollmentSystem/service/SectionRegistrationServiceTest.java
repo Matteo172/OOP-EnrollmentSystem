@@ -1,6 +1,6 @@
 package EnrollmentSystem.service;
 
-import EnrollmentSystem.service.SectionFullException;
+import EnrollmentSystem.SectionFileException.SectionFullException;
 import EnrollmentSystem.model.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
