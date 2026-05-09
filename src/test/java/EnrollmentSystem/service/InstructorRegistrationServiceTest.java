@@ -16,10 +16,10 @@ public class InstructorRegistrationServiceTest {
     @BeforeEach
     void setup() {
         instructorService = new InstructorRegistrationService();
-        instructor1 = new Instructor(1, "Mr. Santos", "Programming");
-        instructor2 = new Instructor(2, "Ms. Reyes", "Data Structures");
-        Course course = new Course("C01", "Programming", "BSIT");
-        testSection = new Section("BSIT-1A", course, null, 30);
+        instructor1 = new Instructor(1, "Mr. Santos", "Project Management");
+        instructor2 = new Instructor(2, "Ms. Reyes", "Data Structures and Algorithms");
+        Course course = new Course("C01", "System Analysis and Design", "BSIT");
+        testSection = new Section("IT2C", course, null, 30);
     }
 
 
@@ -32,7 +32,7 @@ public class InstructorRegistrationServiceTest {
 
     @Test
     void shouldRejectDuplicateInstructorID() {
-        Instructor duplicate = new Instructor(1, "Mr. Clone", "Math");
+        Instructor duplicate = new Instructor(1, "Mr. Bayek", "Math");
         instructorService.addInstructor(instructor1);
         instructorService.addInstructor(duplicate);
         assertEquals(1, instructorService.instructors.size());
