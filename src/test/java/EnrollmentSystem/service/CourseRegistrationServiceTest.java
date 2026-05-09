@@ -13,8 +13,8 @@ public class CourseRegistrationServiceTest {
     @BeforeEach
     void setup() {
         courseService = new CourseRegistrationService();
-        course1 = new Course("C01", "Programming", "BSIT");
-        course2 = new Course("C02", "Data Structures", "BSIT");
+        course1 = new Course("C01", "System Analysis and Design", "BSIT");
+        course2 = new Course("C02", "IT Project Management", "BSIT");
     }
 
     @Test
@@ -55,7 +55,7 @@ public class CourseRegistrationServiceTest {
 
     @Test
     void shouldNotCrashWhenUpdatingNonExistentCourse() {
-        Course nonExistent = new Course("C99", "Ghost Course", "BSIT");
+        Course nonExistent = new Course("C99", "Not Existing Course", "BSIT");
         courseService.UpdateCourse(nonExistent);
         assertEquals(0, courseService.courses.size());
     }
@@ -69,7 +69,7 @@ public class CourseRegistrationServiceTest {
 
     @Test
     void shouldNotCrashWhenRemovingNonExistentCourse() {
-        Course nonExistent = new Course("C99", "Ghost Course", "BSIT");
+        Course nonExistent = new Course("C99", "Not Existing Course", "BSIT");
         courseService.RemoveCourse(nonExistent);
         assertEquals(0, courseService.courses.size());
     }
