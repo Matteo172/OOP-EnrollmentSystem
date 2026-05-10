@@ -7,4 +7,5 @@ public interface TuitionReg {
     void makePayment(Student student, double amount);
     double getRemainingBalance(Student student);
     boolean isFullyPaid(Student student);
+    double applyScholarshipDiscount(Student student, String scholarshipType);
 }

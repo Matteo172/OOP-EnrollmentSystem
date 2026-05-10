@@ -60,4 +60,26 @@ class TuitionFeePaymentTest {
         tuitionFeePayment.makePayment(student, 9999.0);
         assertEquals(3000.0, tuitionFeePayment.getRemainingBalance(student));
     }
+
+    @Test
+    void shouldApplyFullScholarship() {
+        tuitionFeePayment.calculateTuitionFee(student, 3, 0);
+        tuitionFeePayment.applyScholarshipDiscount(student, "full");
+        assertEquals(0.0, tuitionFeePayment.getRemainingBalance(student));
+    }
+
+    @Test
+    void shouldApplyPartialScholarship() {
+        tuitionFeePayment.calculateTuitionFee(student, 3, 0);
+        tuitionFeePayment.applyScholarshipDiscount(student, "partial");
+        assertEquals(1500.0, tuitionFeePayment.getRemainingBalance(student));
+    }
+
+    @Test
+    void shouldRejectInvalidScholarshipType() {
+        tuitionFeePayment.calculateTuitionFee(student, 3, 0);
+        double balanceBefore = tuitionFeePayment.getRemainingBalance(student);
+        tuitionFeePayment.applyScholarshipDiscount(student, "invalid");
+        assertEquals(balanceBefore, tuitionFeePayment.getRemainingBalance(student));
+    }
 }

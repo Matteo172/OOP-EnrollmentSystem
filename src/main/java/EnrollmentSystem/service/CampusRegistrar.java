@@ -2,7 +2,6 @@ package EnrollmentSystem.service;
 
 import EnrollmentSystem.exception.SectionFullException;
 import EnrollmentSystem.model.*;
-
 import java.util.List;
 
 public class CampusRegistrar {
@@ -13,9 +12,9 @@ public class CampusRegistrar {
     private TuitionReg tuitionRegistration;
     private InstructorReg instructorRegistration;
 
-    public CampusRegistrar(StudentReg studentRegistration, CourseReg courseRegistration, DepartmentReg
-                                   departmentRegistration, SectionReg sectionRegistration, TuitionReg tuitionRegistration,
-                           InstructorReg instructorRegistration) {
+    public CampusRegistrar(StudentReg studentRegistration, CourseReg courseRegistration,
+                           DepartmentReg departmentRegistration, SectionReg sectionRegistration,
+                           TuitionReg tuitionRegistration, InstructorReg instructorRegistration) {
         this.studentRegistration = studentRegistration;
         this.courseRegistration = courseRegistration;
         this.departmentRegistration = departmentRegistration;
@@ -24,7 +23,7 @@ public class CampusRegistrar {
         this.instructorRegistration = instructorRegistration;
     }
 
-    //Student
+    // Student
     public void displayAllStudent() {
         studentRegistration.DisplayStudent();
     }
@@ -44,7 +43,23 @@ public class CampusRegistrar {
         return "Remove Success";
     }
 
-    //Course
+    public Student findStudentByID(int studentID) {
+        return studentRegistration.findStudentByID(studentID);
+    }
+
+    public Student findStudentByName(String name) {
+        return studentRegistration.findStudentByName(name);
+    }
+
+    public void displayStudentTuitionStatus() {
+        studentRegistration.displayStudentTuitionStatus();
+    }
+
+
+
+
+
+    // Course
     public void displayAllCourse() {
         courseRegistration.DisplayCourse();
     }
@@ -64,7 +79,10 @@ public class CampusRegistrar {
         return "Remove Success";
     }
 
-    //Department
+
+
+
+    // Department
     public void displayAllDepartment() {
         departmentRegistration.DisplayDepartments();
     }
@@ -73,7 +91,10 @@ public class CampusRegistrar {
         departmentRegistration.viewAllDepartmentsWithSections();
     }
 
-    public String saveDepartment(String departmentID, String departmentName, List<Instructor> instructorList, List<Section> sectionList) {
+
+
+    public String saveDepartment(String departmentID, String departmentName,
+                                 List<Instructor> instructorList, List<Section> sectionList) {
         departmentRegistration.addDepartment(departmentID, departmentName, instructorList, sectionList);
         return "Department Saved Successfully";
     }
@@ -88,7 +109,9 @@ public class CampusRegistrar {
         return "Remove Success";
     }
 
-    //Section
+
+
+    // Section
     public void displaySectionDetails(Section section) {
         sectionRegistration.displaySectionDetails(section);
     }
@@ -105,7 +128,14 @@ public class CampusRegistrar {
         sectionRegistration.enrollStudentInSection(student, section);
     }
 
-    //Tuition
+    public Section findSectionByID(String sectionID) {
+        return sectionRegistration.findSectionByID(sectionID);
+    }
+
+
+
+
+    // Tuition
     public double calculateFee(Student student, int units, double discountRate) {
         return tuitionRegistration.calculateTuitionFee(student, units, discountRate);
     }
@@ -122,7 +152,14 @@ public class CampusRegistrar {
         return tuitionRegistration.isFullyPaid(student);
     }
 
-    //Instructor
+    public double applyScholarshipDiscount(Student student, String scholarshipType) {
+        return tuitionRegistration.applyScholarshipDiscount(student, scholarshipType);
+    }
+
+
+
+
+    // Instructor
     public void addInstructor(Instructor instructor) {
         instructorRegistration.addInstructor(instructor);
     }
