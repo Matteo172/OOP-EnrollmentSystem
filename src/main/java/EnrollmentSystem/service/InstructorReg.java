@@ -9,5 +9,9 @@ public interface InstructorReg {
     void assignInstructorToSection(Instructor instructor, Section section);
     void getInstructorDetails(int instructorID);
     void displayAllInstructors();
+    void removeInstructor(Instructor instructor);
+    void updateInstructor(Instructor instructor);
+    Instructor findInstructorByID(int instructorID);
+
 }
 

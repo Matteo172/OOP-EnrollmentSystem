@@ -91,7 +91,7 @@ public class StudentRegistrationService implements StudentReg {
             System.out.println("Total   : " + s.getTotalTuition());
             System.out.println("Balance : " + s.getTuitionBalance());
             System.out.println("Status  : " + (s.isFullyPaid() ? "FULLY PAID" : "PENDING"));
-            System.out.println("------------------------------");
+            System.out.println("==============================");
         }
     }
 

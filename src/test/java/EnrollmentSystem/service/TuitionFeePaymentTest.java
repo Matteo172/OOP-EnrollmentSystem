@@ -76,6 +76,13 @@ class TuitionFeePaymentTest {
     }
 
     @Test
+    void shouldApplyAcademicScholarship() {
+        tuitionFeePayment.calculateTuitionFee(student, 3, 0);
+        tuitionFeePayment.applyScholarshipDiscount(student, "academic");
+        assertEquals(2250.0, tuitionFeePayment.getRemainingBalance(student));
+    }
+
+    @Test
     void shouldRejectInvalidScholarshipType() {
         tuitionFeePayment.calculateTuitionFee(student, 3, 0);
         double balanceBefore = tuitionFeePayment.getRemainingBalance(student);

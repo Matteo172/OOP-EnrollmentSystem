@@ -55,10 +55,6 @@ public class CampusRegistrar {
         studentRegistration.displayStudentTuitionStatus();
     }
 
-
-
-
-
     // Course
     public void displayAllCourse() {
         courseRegistration.DisplayCourse();
@@ -79,9 +75,6 @@ public class CampusRegistrar {
         return "Remove Success";
     }
 
-
-
-
     // Department
     public void displayAllDepartment() {
         departmentRegistration.DisplayDepartments();
@@ -90,8 +83,6 @@ public class CampusRegistrar {
     public void displayAllDepartmentwithSections() {
         departmentRegistration.viewAllDepartmentsWithSections();
     }
-
-
 
     public String saveDepartment(String departmentID, String departmentName,
                                  List<Instructor> instructorList, List<Section> sectionList) {
@@ -109,8 +100,6 @@ public class CampusRegistrar {
         return "Remove Success";
     }
 
-
-
     // Section
     public void displaySectionDetails(Section section) {
         sectionRegistration.displaySectionDetails(section);
@@ -120,8 +109,19 @@ public class CampusRegistrar {
         sectionRegistration.displayAllSectionsWithDetails();
     }
 
-    public void addSection(Section section) {
+    public String addSection(Section section) {
         sectionRegistration.addSection(section);
+        return "Section Saved Successfully";
+    }
+
+    public String updateSection(Section section) {
+        sectionRegistration.updateSection(section);
+        return "Update Complete";
+    }
+
+    public String removeSection(Section section) {
+        sectionRegistration.removeSection(section);
+        return "Remove Success";
     }
 
     public void enrollStudent(Student student, Section section) throws SectionFullException {
@@ -131,9 +131,6 @@ public class CampusRegistrar {
     public Section findSectionByID(String sectionID) {
         return sectionRegistration.findSectionByID(sectionID);
     }
-
-
-
 
     // Tuition
     public double calculateFee(Student student, int units, double discountRate) {
@@ -156,12 +153,20 @@ public class CampusRegistrar {
         return tuitionRegistration.applyScholarshipDiscount(student, scholarshipType);
     }
 
-
-
-
     // Instructor
-    public void addInstructor(Instructor instructor) {
+    public String addInstructor(Instructor instructor) {
         instructorRegistration.addInstructor(instructor);
+        return "Instructor Saved Successfully";
+    }
+
+    public String updateInstructor(Instructor instructor) {
+        instructorRegistration.updateInstructor(instructor);
+        return "Update Complete";
+    }
+
+    public String removeInstructor(Instructor instructor) {
+        instructorRegistration.removeInstructor(instructor);
+        return "Remove Success";
     }
 
     public void assignInstructorToSection(Instructor instructor, Section section) {
@@ -175,4 +180,9 @@ public class CampusRegistrar {
     public void displayAllInstructors() {
         instructorRegistration.displayAllInstructors();
     }
+
+    public Instructor findInstructorByID(int instructorID) {
+        return instructorRegistration.findInstructorByID(instructorID);
+    }
+
 }

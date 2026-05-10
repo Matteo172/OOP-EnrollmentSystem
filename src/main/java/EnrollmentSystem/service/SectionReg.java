@@ -10,5 +10,8 @@ public interface SectionReg {
     void displaySectionDetails(Section section);
     void displayAllSectionsWithDetails();
     Section findSectionByID(String sectionID);
+    void removeSection(Section section);
+    void updateSection(Section section);
+
 
 }
