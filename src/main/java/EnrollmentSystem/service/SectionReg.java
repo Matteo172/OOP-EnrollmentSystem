@@ -9,5 +9,6 @@ public interface SectionReg {
     void enrollStudentInSection(Student student, Section section) throws SectionFullException;
     void displaySectionDetails(Section section);
     void displayAllSectionsWithDetails();
+    Section findSectionByID(String sectionID);
 
 }

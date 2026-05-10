@@ -81,5 +81,18 @@ public class SectionRegistrationService implements SectionReg{
         }
     }
 
+    //Find Section by ID
+    @Override
+    public Section findSectionByID(String sectionID) {
+        for (Section s : sections) {
+            if (s.getSectionID().equals(sectionID)) {
+                return s;
+            }
+        }
+        System.out.println("Section not found.");
+        return null;
+    }
+
+
 
 }

@@ -38,6 +38,27 @@ public class TuitionFeePayment implements TuitionReg {
 
     @Override
     public boolean isFullyPaid(Student student) {
-        return student.getTuitionBalance() == 0;
+        return student.getTuitionBalance() == 0 && student.getTotalTuition() > 0;
+    }
+
+    @Override
+    public double applyScholarshipDiscount(Student student, String scholarshipType) {
+        double discount = 0;
+
+        if (scholarshipType.equalsIgnoreCase("full")) {
+            discount = 1.0;
+        } else if (scholarshipType.equalsIgnoreCase("partial")) {
+            discount = 0.50;
+        } else if (scholarshipType.equalsIgnoreCase("academic")) {
+            discount = 0.25;
+        } else {
+            System.out.println("Invalid scholarship type.");
+            return student.getTuitionBalance();
+        }
+
+        double discountedAmount = student.getTotalTuition() * discount;
+        student.setTuitionBalance(student.getTotalTuition() - discountedAmount);
+        System.out.println("Scholarship applied! New balance: " + student.getTuitionBalance());
+        return student.getTuitionBalance();
     }
 }
