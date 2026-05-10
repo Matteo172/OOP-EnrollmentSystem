@@ -42,6 +42,10 @@ public class Student extends Person {
         this.tuitionBalance = tuitionBalance;
     }
 
+    public boolean isFullyPaid() {
+        return tuitionBalance == 0 && totalTuition > 0;
+    }
+
     public void mainTask() {
         System.out.println("Studies");
     }

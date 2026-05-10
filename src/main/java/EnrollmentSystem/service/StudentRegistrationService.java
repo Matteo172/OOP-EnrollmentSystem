@@ -31,6 +31,9 @@ public class StudentRegistrationService implements StudentReg {
         }
     }
 
+    //View Tuition
+
+
     //Update
     @Override
     public void UpdateStudent(Student student) {
