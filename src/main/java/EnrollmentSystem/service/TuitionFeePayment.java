@@ -1,38 +1,43 @@
 package EnrollmentSystem.service;
 
+import EnrollmentSystem.model.Student;
+
 public class TuitionFeePayment implements TuitionReg {
 
     private final double PRICE_PER_UNIT = 1000.00;
-    private double Balance;
-    private double totalTuition;
 
-    public double calculateTuitionFee(int units, double discountRate){
-        totalTuition = PRICE_PER_UNIT * units;
-        if(discountRate != 0){
-            totalTuition = totalTuition - (totalTuition * discountRate);
+    @Override
+    public double calculateTuitionFee(Student student, int units, double discountRate) {
+        double total = PRICE_PER_UNIT * units;
+        if (discountRate != 0) {
+            total = total - (total * discountRate);
         }
-        Balance = totalTuition;
-        return totalTuition;
+        student.setTotalTuition(total);
+        student.setTuitionBalance(total);
+        return total;
     }
 
-    public void makePayment(double amount){
+    @Override
+    public void makePayment(Student student, double amount) {
         if (amount <= 0) {
             System.out.println("Error: Payment amount must be greater than zero.");
             return;
         }
-        if (amount > Balance) {
-            System.out.println("Error: Payment exceeds remaining balance. Remaining balance is: " + Balance);
+        if (amount > student.getTuitionBalance()) {
+            System.out.println("Error: Payment exceeds remaining balance. Remaining balance is: "
+                    + student.getTuitionBalance());
             return;
         }
-        Balance = Balance - amount;
+        student.setTuitionBalance(student.getTuitionBalance() - amount);
     }
 
-    public double getRemainingBalance(){
-        return Balance;
+    @Override
+    public double getRemainingBalance(Student student) {
+        return student.getTuitionBalance();
     }
 
-    public boolean isFullyPaid(){
-        return Balance == 0;
+    @Override
+    public boolean isFullyPaid(Student student) {
+        return student.getTuitionBalance() == 0;
     }
-
 }

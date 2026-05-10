@@ -1,5 +1,6 @@
 package EnrollmentSystem.service;
 
+import EnrollmentSystem.model.Student;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,59 +8,56 @@ import org.junit.jupiter.api.Test;
 class TuitionFeePaymentTest {
 
     private TuitionFeePayment tuitionFeePayment;
+    private Student student;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         tuitionFeePayment = new TuitionFeePayment();
+        student = new Student(1, "Alice", "BSIT");
     }
 
     @Test
-    void shouldCalculateTuitionfee(){
-
-        assertEquals(3000.0, tuitionFeePayment.calculateTuitionFee(3, 0));
+    void shouldCalculateTuitionFee() {
+        assertEquals(3000.0, tuitionFeePayment.calculateTuitionFee(student, 3, 0));
     }
 
     @Test
-    void shouldCalculateTuitionfeewithDiscount(){
-
-        assertEquals(2700.0, tuitionFeePayment.calculateTuitionFee(3, 0.10));
+    void shouldCalculateTuitionFeeWithDiscount() {
+        assertEquals(2700.0, tuitionFeePayment.calculateTuitionFee(student, 3, 0.10));
     }
 
     @Test
-    void shouldMakePayment(){
-
-        tuitionFeePayment.calculateTuitionFee(3,0.10);
-        tuitionFeePayment.makePayment(2700.0);
-        assertEquals(0, tuitionFeePayment.getRemainingBalance());
+    void shouldMakePayment() {
+        tuitionFeePayment.calculateTuitionFee(student, 3, 0.10);
+        tuitionFeePayment.makePayment(student, 2700.0);
+        assertEquals(0, tuitionFeePayment.getRemainingBalance(student));
     }
 
     @Test
-    void shouldRejectNegativePayment(){
-        tuitionFeePayment.calculateTuitionFee(3, 0);
-        tuitionFeePayment.makePayment(-500);
-        assertEquals(3000.0, tuitionFeePayment.getRemainingBalance());
+    void shouldCheckIfFullyPaid() {
+        tuitionFeePayment.calculateTuitionFee(student, 3, 0.10);
+        tuitionFeePayment.makePayment(student, 2700.0);
+        assertTrue(tuitionFeePayment.isFullyPaid(student));
+    }
+
+    @Test
+    void shouldCheckIfNotFullyPaid() {
+        tuitionFeePayment.calculateTuitionFee(student, 3, 0.10);
+        tuitionFeePayment.makePayment(student, 1000.0);
+        assertFalse(tuitionFeePayment.isFullyPaid(student));
+    }
+
+    @Test
+    void shouldRejectNegativePayment() {
+        tuitionFeePayment.calculateTuitionFee(student, 3, 0);
+        tuitionFeePayment.makePayment(student, -500);
+        assertEquals(3000.0, tuitionFeePayment.getRemainingBalance(student));
     }
 
     @Test
     void shouldRejectOverpayment() {
-        tuitionFeePayment.calculateTuitionFee(3, 0);
-        tuitionFeePayment.makePayment(9999.0);
-        assertEquals(3000.0, tuitionFeePayment.getRemainingBalance());
+        tuitionFeePayment.calculateTuitionFee(student, 3, 0);
+        tuitionFeePayment.makePayment(student, 9999.0);
+        assertEquals(3000.0, tuitionFeePayment.getRemainingBalance(student));
     }
-
-    @Test
-    void shouldCheckIfFullyPaid(){
-
-        tuitionFeePayment.calculateTuitionFee(3,0.10);
-        tuitionFeePayment.makePayment(2700.0);
-        assertTrue(tuitionFeePayment.isFullyPaid());
-    }
-
-    @Test
-    void shouldCheckIfNotFullyPaid(){
-        tuitionFeePayment.calculateTuitionFee(3,0.10);
-        tuitionFeePayment.makePayment(1000.0);
-        assertFalse(tuitionFeePayment.isFullyPaid());
-    }
-
 }

@@ -1,11 +1,12 @@
 package EnrollmentSystem.model;
 
-public class Student extends Person{
+public class Student extends Person {
 
     private String studentProgram;
+    private double totalTuition;
+    private double tuitionBalance;
 
-    public Student(){
-
+    public Student() {
     }
 
     public Student(int ID, String Name) {
@@ -17,15 +18,31 @@ public class Student extends Person{
         this.studentProgram = studentProgram;
     }
 
-    public String getStudentProgram(){
+    public String getStudentProgram() {
         return studentProgram;
     }
 
-    public void setStudentProgram(String studentProgram){
+    public void setStudentProgram(String studentProgram) {
         this.studentProgram = studentProgram;
     }
 
-    public void mainTask(){
+    public double getTotalTuition() {
+        return totalTuition;
+    }
+
+    public void setTotalTuition(double totalTuition) {
+        this.totalTuition = totalTuition;
+    }
+
+    public double getTuitionBalance() {
+        return tuitionBalance;
+    }
+
+    public void setTuitionBalance(double tuitionBalance) {
+        this.tuitionBalance = tuitionBalance;
+    }
+
+    public void mainTask() {
         System.out.println("Studies");
     }
 
