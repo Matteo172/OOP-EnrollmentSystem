@@ -42,7 +42,7 @@ public class StudentRegistrationServiceTest {
     void shouldUpdateStudentSuccessfully() {
         studentService.addStudent(new Student(1, "Alice", "BSIT"));
         studentService.UpdateStudent(new Student(1, "Alice Updated", "BSCS"));
-        assertEquals("Alice Updated", studentService.students.getFirst().getName());
+        assertEquals("Alice Updated", studentService.students.get(0).getName());
     }
 
     @Test
@@ -61,8 +61,52 @@ public class StudentRegistrationServiceTest {
 
     @Test
     void shouldNotCrashWhenRemovingNonExistentStudent() {
-        Student student = new Student(99, "Karen", "BSIT");
+        Student student = new Student(99, "Ghost", "BSIT");
         studentService.RemoveStudent(student);
         assertEquals(0, studentService.students.size());
+    }
+
+    @Test
+    void shouldFindStudentByID() {
+        studentService.addStudent(new Student(1, "Alice", "BSIT"));
+        Student found = studentService.findStudentByID(1);
+        assertNotNull(found);
+        assertEquals("Alice", found.getName());
+    }
+
+    @Test
+    void shouldReturnNullWhenStudentIDNotFound() {
+        Student found = studentService.findStudentByID(99);
+        assertNull(found);
+    }
+
+    @Test
+    void shouldFindStudentByName() {
+        studentService.addStudent(new Student(1, "Alice", "BSIT"));
+        Student found = studentService.findStudentByName("alice");
+        assertNotNull(found);
+        assertEquals(1, found.getID());
+    }
+
+    @Test
+    void shouldReturnNullWhenStudentNameNotFound() {
+        Student found = studentService.findStudentByName("Ghost");
+        assertNull(found);
+    }
+
+    @Test
+    void shouldDisplayNoTuitionStatusWhenEmpty() {
+        studentService.displayStudentTuitionStatus();
+        assertEquals(0, studentService.students.size());
+    }
+
+    @Test
+    void shouldDisplayTuitionStatusWhenNotEmpty() {
+        Student student = new Student(1, "Alice", "BSIT");
+        student.setTotalTuition(3000);
+        student.setTuitionBalance(1000);
+        studentService.addStudent(student);
+        studentService.displayStudentTuitionStatus();
+        assertEquals(1, studentService.students.size());
     }
 }
