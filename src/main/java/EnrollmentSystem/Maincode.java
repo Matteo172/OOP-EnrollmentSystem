@@ -45,7 +45,7 @@ public class Maincode {
             System.out.println("║   3. Department Registration                     ║");
             System.out.println("║   4. Section Registration                        ║");
             System.out.println("║   5. Tuition Fee Payment                         ║");
-            System.out.println("║   4. Exit                                        ║");
+            System.out.println("║   6. Exit                                        ║");
             System.out.println("╚══════════════════════════════════════════════════╝");
 
             try{

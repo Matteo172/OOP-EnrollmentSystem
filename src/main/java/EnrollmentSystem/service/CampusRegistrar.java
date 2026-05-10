@@ -1,7 +1,6 @@
-
 package EnrollmentSystem.service;
 
-import EnrollmentSystem.SectionFileException.SectionFullException;
+import EnrollmentSystem.exception.SectionFullException;
 import EnrollmentSystem.model.*;
 
 import java.util.List;
@@ -15,7 +14,7 @@ public class CampusRegistrar {
     private InstructorReg instructorRegistration;
 
     public CampusRegistrar(StudentReg studentRegistration, CourseReg courseRegistration, DepartmentReg
-            departmentRegistration, SectionReg sectionRegistration, TuitionReg tuitionRegistration,
+                                   departmentRegistration, SectionReg sectionRegistration, TuitionReg tuitionRegistration,
                            InstructorReg instructorRegistration) {
         this.studentRegistration = studentRegistration;
         this.courseRegistration = courseRegistration;
@@ -25,74 +24,69 @@ public class CampusRegistrar {
         this.instructorRegistration = instructorRegistration;
     }
 
-
     //Student
-    public void displayAllStudent(){
+    public void displayAllStudent() {
         studentRegistration.DisplayStudent();
     }
 
-    public String saveStudent(Student student){
+    public String saveStudent(Student student) {
         studentRegistration.addStudent(student);
         return "Student Saved Successfully";
     }
 
-    public String updateStudent(Student student){
+    public String updateStudent(Student student) {
         studentRegistration.UpdateStudent(student);
         return "Update Complete";
     }
 
-    public String removeStudent(Student student){
+    public String removeStudent(Student student) {
         studentRegistration.RemoveStudent(student);
         return "Remove Success";
     }
 
-
     //Course
-    public void displayAllCourse(){
+    public void displayAllCourse() {
         courseRegistration.DisplayCourse();
     }
 
-    public String saveCourse(Course course){
+    public String saveCourse(Course course) {
         courseRegistration.addCourse(course);
         return "Course Saved Successfully";
     }
 
-    public String updateCourse(Course course){
+    public String updateCourse(Course course) {
         courseRegistration.UpdateCourse(course);
         return "Update Complete";
     }
 
-    public String removeCourse(Course course){
+    public String removeCourse(Course course) {
         courseRegistration.RemoveCourse(course);
         return "Remove Success";
     }
 
-
-
     //Department
-    public void displayAllDepartment(){
+    public void displayAllDepartment() {
         departmentRegistration.DisplayDepartments();
     }
 
-    public void displayAllDepartmentwithSections(){
+    public void displayAllDepartmentwithSections() {
         departmentRegistration.viewAllDepartmentsWithSections();
     }
 
-    public String saveDepartment(String departmentID, String departmentName, List<Instructor> instructorList, List<Section> sectionList){
+    public String saveDepartment(String departmentID, String departmentName, List<Instructor> instructorList, List<Section> sectionList) {
         departmentRegistration.addDepartment(departmentID, departmentName, instructorList, sectionList);
         return "Department Saved Successfully";
     }
 
-    public String updateDepartment(Department department){
+    public String updateDepartment(Department department) {
         departmentRegistration.UpdateDepartment(department);
         return "Update Complete";
     }
 
-    public String removeDepartment(Department department){
+    public String removeDepartment(Department department) {
         departmentRegistration.RemoveDepartment(department);
         return "Remove Success";
     }
-
 
     //Section
     public void displaySectionDetails(Section section) {
@@ -111,26 +105,22 @@ public class CampusRegistrar {
         sectionRegistration.enrollStudentInSection(student, section);
     }
 
-
-
     //Tuition
-    public double calculateFee(int units, double discountRate) {
-        return tuitionRegistration.calculateTuitionFee(units, discountRate);
+    public double calculateFee(Student student, int units, double discountRate) {
+        return tuitionRegistration.calculateTuitionFee(student, units, discountRate);
     }
 
-    public void makePayment(double amount) {
-        tuitionRegistration.makePayment(amount);
+    public void makePayment(Student student, double amount) {
+        tuitionRegistration.makePayment(student, amount);
     }
 
-    public double getRemainingBalance() {
-        return tuitionRegistration.getRemainingBalance();
+    public double getRemainingBalance(Student student) {
+        return tuitionRegistration.getRemainingBalance(student);
     }
 
-    public boolean isFullyPaid() {
-        return tuitionRegistration.isFullyPaid();
+    public boolean isFullyPaid(Student student) {
+        return tuitionRegistration.isFullyPaid(student);
     }
-
-
 
     //Instructor
     public void addInstructor(Instructor instructor) {
@@ -148,8 +138,4 @@ public class CampusRegistrar {
     public void displayAllInstructors() {
         instructorRegistration.displayAllInstructors();
     }
-
-
-
-
 }

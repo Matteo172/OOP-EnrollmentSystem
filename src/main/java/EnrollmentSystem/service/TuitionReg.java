@@ -1,8 +1,10 @@
 package EnrollmentSystem.service;
 
+import EnrollmentSystem.model.Student;
+
 public interface TuitionReg {
-    double calculateTuitionFee(int units, double discountRate);
-    void makePayment(double amount);
-    double getRemainingBalance();
-    boolean isFullyPaid();
+    double calculateTuitionFee(Student student, int units, double discountRate);
+    void makePayment(Student student, double amount);
+    double getRemainingBalance(Student student);
+    boolean isFullyPaid(Student student);
 }
