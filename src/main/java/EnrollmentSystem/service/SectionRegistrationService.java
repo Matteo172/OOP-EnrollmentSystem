@@ -93,6 +93,31 @@ public class SectionRegistrationService implements SectionReg{
         return null;
     }
 
+    @Override
+    public void removeSection(Section section) {
+        for (int i = 0; i < sections.size(); i++) {
+            if (sections.get(i).getSectionID().equals(section.getSectionID())) {
+                sections.remove(i);
+                System.out.println("Section removed successfully.");
+                return;
+            }
+        }
+        System.out.println("Section not found.");
+    }
+
+    @Override
+    public void updateSection(Section section) {
+        for (int i = 0; i < sections.size(); i++) {
+            if (sections.get(i).getSectionID().equals(section.getSectionID())) {
+                sections.set(i, section);
+                System.out.println("Section updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Section not found.");
+    }
+
+
 
 
 }

@@ -50,4 +50,44 @@ public class InstructorRegistrationService implements InstructorReg {
             }
         }
     }
+
+    @Override
+    public void removeInstructor(Instructor instructor) {
+        for (int i = 0; i < instructors.size(); i++) {
+            if (instructors.get(i).getID() == instructor.getID()) {
+                instructors.remove(i);
+                System.out.println("Instructor removed successfully.");
+                return;
+            }
+        }
+        System.out.println("Instructor not found.");
+    }
+
+    @Override
+    public void updateInstructor(Instructor instructor) {
+        for (int i = 0; i < instructors.size(); i++) {
+            if (instructors.get(i).getID() == instructor.getID()) {
+                instructors.set(i, instructor);
+                System.out.println("Instructor updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Instructor not found.");
+    }
+
+    @Override
+    public Instructor findInstructorByID(int instructorID) {
+        for (Instructor i : instructors) {
+            if (i.getID() == instructorID) {
+                return i;
+            }
+        }
+        System.out.println("Instructor not found.");
+        return null;
+    }
+
+
+
+
+
 }
